@@ -15,7 +15,6 @@ data:
     external_url ENV['EXTERNAL_URL'];
     root_pass = ENV['GITLAB_ROOT_PASSWORD'];
     gitlab_rails['initial_root_password'] = root_pass unless root_pass.to_s == '';
-    postgresql['enable'] = false;
     unicorn['worker_processes'] = 2;
     manage_accounts['enable'] = true;
     manage_storage_directories['manage_etc'] = false;
