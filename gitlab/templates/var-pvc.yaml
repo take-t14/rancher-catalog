@@ -3,10 +3,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ template "gitlab-ce.fullname" . }}-var
-  {{- if .Values.persistence.gitlabVar.storageClass }}
-  annotations:
-    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.gitlabVar.storageClass | quote }}
-  {{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.gitlabVar.accessMode | quote }}
