@@ -5,14 +5,13 @@ metadata:
   name: {{ template "gitlab-ce.fullname" . }}-var
   annotations:
   {{- if .Values.persistence.gitlabVar.storageClass }}
-    storageClassName: {{ .Values.persistence.gitlabVar.storageClass | quote }}
-  {{- else }}
-    storageClassName: pv-var
+    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.gitlabVar.storageClass | quote }}
   {{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.gitlabVar.accessMode | quote }}
-  resources:
+  storageClassName: pv-var
+    resources:
     requests:
       storage: {{ .Values.persistence.gitlabVar.size | quote }}
 {{- end }}

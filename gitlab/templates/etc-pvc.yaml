@@ -5,14 +5,13 @@ metadata:
   name: {{ template "gitlab-ce.fullname" . }}-etc
   annotations:
   {{- if .Values.persistence.gitlabEtc.storageClass }}
-    storageClassName: {{ .Values.persistence.gitlabEtc.storageClass | quote }}
-  {{- else }}
-    storageClassName: pv-etc
+    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.gitlabEtc.storageClass | quote }}
   {{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
-  resources:
+  storageClassName: pv-var
+    resources:
     requests:
       storage: {{ .Values.persistence.gitlabEtc.size | quote }}
 {{- end }}
