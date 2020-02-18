@@ -1,0 +1,16 @@
+{{- if .Values.persistence.gitlabEtc.enabled and .Values.persistence.gitlabEtc.storageClass eq "pv-etc" }}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}-pv-etc
+spec:
+  storageClassName: manual
+  capacity:
+    storage: {{ .Values.persistence.gitlabEtc.size | quote }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: pv-etc
+  hostPath:
+    path: /data
+{{- end }}
