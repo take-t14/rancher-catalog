@@ -7,7 +7,7 @@ metadata:
   {{- if .Values.persistence.gitlabVar.storageClass }}
     storageClassName: {{ .Values.persistence.gitlabVar.storageClass | quote }}
   {{- else }}
-    storageClassName: pv-var
+    storageClassName: manual
   {{- end }}
 spec:
   accessModes:
