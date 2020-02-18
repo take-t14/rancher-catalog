@@ -85,17 +85,10 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: gitlab-log
-      {{- if .Values.persistence.gitlabLog.enabled }}
+      - name: gitlab-var
+      {{- if .Values.persistence.gitlabVar.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "gitlab-ce.fullname" . }}-log
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
-      - name: gitlab-data
-      {{- if .Values.persistence.gitlabData.enabled }}
-        persistentVolumeClaim:
-          claimName: {{ template "gitlab-ce.fullname" . }}-data
+          claimName: {{ template "gitlab-ce.fullname" . }}-var
       {{- else }}
         emptyDir: {}
       {{- end }}
