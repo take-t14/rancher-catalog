@@ -5,7 +5,7 @@ metadata:
   name: {{ template "gitlab-ce.fullname" . }}-etc
 spec:
   accessModes:
-    - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
+  - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
   storageClassName: pv-var
     resources:
     requests:
