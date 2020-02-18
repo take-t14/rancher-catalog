@@ -12,5 +12,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: pv-log
   hostPath:
-    path: /data
+    path: /data/log
 {{- end }}
