@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: {{ template "gitlab-ce.fullname" . }}-var
   annotations:
-  {{- if ne .Values.persistence.gitlabVar.storageClass "pv-var" }}
+  {{- if (ne .Values.persistence.gitlabVar.storageClass "pv-var") }}
   {{- if .Values.persistence.gitlabVar.storageClass }}
     volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.gitlabVar.storageClass | quote }}
   {{- else }}
