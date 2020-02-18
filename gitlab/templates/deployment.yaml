@@ -72,11 +72,9 @@ spec:
           failureThreshold: 3
         volumeMounts:
         - name: gitlab-etc
-          mountPath: /etc/gitlab
-        - name: gitlab-log
-          mountPath: /var/log/gitlab
-        - name: gitlab-data
-          mountPath: /var/opt/gitlab
+          mountPath: /etc
+        - name: gitlab-var
+          mountPath: /var
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:

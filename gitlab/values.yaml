@@ -76,20 +76,10 @@ persistence:
     ##
     # storageClass:
     accessMode: ReadWriteOnce
-  ## This volume persists generated configuration files, keys, and certs.
-  ##
-  gitlabLog:
-    enabled: true
-    size: 1Gi
-    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
-    ## Default: volume.alpha.kubernetes.io/storage-class: default
-    ##
-    # storageClass:
-    accessMode: ReadWriteOnce
   ## This volume is used to store git data and other project files.
   ## ref: https://docs.gitlab.com/omnibus/settings/configuration.html#storing-git-data-in-an-alternative-directory
   ##
-  gitlabData:
+  gitlabVar:
     enabled: true
     size: 10Gi
     ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
