@@ -1,4 +1,4 @@
-{{- if (.Values.persistence.gitlabEtc.enabled) and .Values.persistence.gitlabEtc.storageClass eq "hostpath" }}
+{{- if (.Values.persistence.gitlabEtc.enabled) and .Values.persistence.gitlabEtc.storageClass eq "pv-etc" }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: hostpath
+  storageClassName: pv-etc
   hostPath:
     path: /etc
 {{- end }}
