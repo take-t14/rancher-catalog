@@ -1,4 +1,4 @@
-{{- if .Values.persistence.gitlabEtc.enabled and .Values.persistence.gitlabEtc.storageClass eq "pv-etc" }}
+{{- if (.Values.persistence.gitlabEtc.enabled) and .Values.persistence.gitlabEtc.storageClass eq "pv-etc" }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:

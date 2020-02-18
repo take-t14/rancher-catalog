@@ -1,4 +1,4 @@
-{{- if .Values.persistence.gitlabLog.enabled and .Values.persistence.gitlabLog.storageClass eq "pv-log" }}
+{{- if (.Values.persistence.gitlabLog.enabled) and .Values.persistence.gitlabLog.storageClass eq "pv-log" }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
