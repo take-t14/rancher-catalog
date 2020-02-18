@@ -12,7 +12,7 @@ metadata:
 spec:
   storageClassName: pv-var
   accessModes:
-    - {{ .Values.persistence.gitlabVar.accessMode | quote }}
+  - {{ .Values.persistence.gitlabVar.accessMode | quote }}
   resources:
     requests:
       storage: {{ .Values.persistence.gitlabVar.size | quote }}

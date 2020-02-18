@@ -10,9 +10,9 @@ metadata:
     volume.alpha.kubernetes.io/storage-class: default
   {{- end }}
 spec:
+  storageClassName: pv-etc
   accessModes:
-    - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
-  storageClassName: pv-var
+  - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
   resources:
     requests:
       storage: {{ .Values.persistence.gitlabEtc.size | quote }}
