@@ -1,15 +1,23 @@
-{{- if (.Values.persistence.gitlabEtc.enabled) and .Values.persistence.gitlabEtc.storageClass eq "pv-etc" }}
+{{- if (.Values.persistence.gitlabEtc.enabled) and .Values.persistence.gitlabEtc.storageClass eq "manual" }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: {{ template "gitlab-ce.fullname" . }}-pv-etc
 spec:
+  storageClassName: {{ .Values.persistence.gitlabEtc.storageClass }}
   capacity:
     storage: {{ .Values.persistence.gitlabEtc.size | quote }}
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: pv-etc
-  hostPath:
+  - ReadWriteOnce
+  local:
     path: /etc
+  persistentVolumeReclaimPolicy: Retain
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node1
 {{- end }}
