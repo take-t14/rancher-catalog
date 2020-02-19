@@ -1,6 +1,6 @@
 {{- if default "" .Values.externalUrl }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ template "gitlab-ce.fullname" . }}
   labels:
@@ -76,24 +76,24 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         volumeMounts:
-        - name: gitlab-etc
+        - name: gitlab-pvc-etc
           mountPath: /etc
-        - name: gitlab-var
+        - name: gitlab-pvc-var
           mountPath: /var
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
-      - name: gitlab-etc
+      - name: gitlab-pvc-etc
       {{- if .Values.persistence.gitlabEtc.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "gitlab-ce.fullname" . }}-etc
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-etc
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: gitlab-var
+      - name: gitlab-pvc-var
       {{- if .Values.persistence.gitlabVar.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "gitlab-ce.fullname" . }}-var
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-var
       {{- else }}
         emptyDir: {}
       {{- end }}

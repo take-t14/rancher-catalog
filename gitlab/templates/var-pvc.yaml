@@ -2,12 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "gitlab-ce.fullname" . }}-var
+  name: {{ template "gitlab-ce.fullname" . }}-pvc-var
 spec:
   {{- if .Values.persistence.gitlabVar.storageClass }}
   storageClassName: {{ .Values.persistence.gitlabVar.storageClass | quote }}
   {{- else }}
-  storageClassName: pv-var
+  storageClassName: manual
   {{- end }}
   accessModes:
   - {{ .Values.persistence.gitlabVar.accessMode | quote }}
