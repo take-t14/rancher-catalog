@@ -75,27 +75,27 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
-#        volumeMounts:
-#        - name: gitlab-pvc-etc
-#          mountPath: /etc
-#        - name: gitlab-pvc-var
-#          mountPath: /var
-#        resources:
-#{{ toYaml .Values.resources | indent 10 }}
-#      volumes:
-#      - name: gitlab-pvc-etc
-#      {{- if .Values.persistence.gitlabEtc.enabled }}
-#        persistentVolumeClaim:
-#          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-etc
-#      {{- else }}
-#        emptyDir: {}
-#      {{- end }}
-#      - name: gitlab-pvc-var
-#      {{- if .Values.persistence.gitlabVar.enabled }}
-#        persistentVolumeClaim:
-#          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-var
-#      {{- else }}
-#        emptyDir: {}
-#      {{- end }}
-#{{ else }}
+        volumeMounts:
+        - name: gitlab-pvc-etc
+          mountPath: /etc
+        - name: gitlab-pvc-var
+          mountPath: /var
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      volumes:
+      - name: gitlab-pvc-etc
+      {{- if .Values.persistence.gitlabEtc.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-etc
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      - name: gitlab-pvc-var
+      {{- if .Values.persistence.gitlabVar.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-var
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+{{ else }}
 {{ end }}
