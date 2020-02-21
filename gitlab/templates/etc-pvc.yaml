@@ -7,7 +7,7 @@ spec:
   {{- if .Values.persistence.gitlabEtc.storageClass }}
   storageClassName: {{ .Values.persistence.gitlabEtc.storageClass | quote }}
   {{- else }}
-  storageClassName: manual
+  storageClassName: local-storage
   {{- end }}
   accessModes:
   - {{ .Values.persistence.gitlabEtc.accessMode | quote }}
