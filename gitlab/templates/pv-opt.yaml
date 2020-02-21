@@ -1,0 +1,23 @@
+{{- if (.Values.persistence.gitlabOpt.enabled) and .Values.persistence.gitlabOpt.storageClass eq "local-storage" }}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}-pv-opt
+spec:
+  storageClassName: {{ .Values.persistence.gitlabOpt.storageClass }}
+  capacity:
+    storage: {{ .Values.persistence.gitlabOpt.size | quote }}
+  accessModes:
+  - ReadWriteOnce
+  local:
+    path: /var/opt/gitlab
+  persistentVolumeReclaimPolicy: Retain
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - pv-opt
+{{- end }}

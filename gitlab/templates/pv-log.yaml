@@ -1,0 +1,23 @@
+{{- if (.Values.persistence.gitlabLog.enabled) and .Values.persistence.gitlabLog.storageClass eq "local-storage" }}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}-pv-log
+spec:
+  storageClassName: {{ .Values.persistence.gitlabLog.storageClass }}
+  capacity:
+    storage: {{ .Values.persistence.gitlabLog.size | quote }}
+  accessModes:
+  - ReadWriteOnce
+  local:
+    path: /var/log/gitlab
+  persistentVolumeReclaimPolicy: Retain
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - pv-log
+{{- end }}

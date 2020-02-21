@@ -1,0 +1,17 @@
+{{- if .Values.persistence.gitlabOpt.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}-pvc-opt
+spec:
+  {{- if .Values.persistence.gitlabOpt.storageClass }}
+  storageClassName: {{ .Values.persistence.gitlabOpt.storageClass | quote }}
+  {{- else }}
+  storageClassName: local-storage
+  {{- end }}
+  accessModes:
+  - {{ .Values.persistence.gitlabOpt.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.gitlabOpt.size | quote }}
+{{- end }}

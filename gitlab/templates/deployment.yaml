@@ -78,8 +78,10 @@ spec:
         volumeMounts:
         - name: gitlab-pvc-etc
           mountPath: /etc
-        - name: gitlab-pvc-var
-          mountPath: /var
+        - name: gitlab-pvc-log
+          mountPath: /var/log/gitlab
+          - name: gitlab-pvc-opt
+          mountPath: /var/opt/gitlab
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -90,10 +92,17 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: gitlab-pvc-var
-      {{- if .Values.persistence.gitlabVar.enabled }}
+      - name: gitlab-pvc-log
+      {{- if .Values.persistence.gitlabLog.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-var
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-log
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      - name: gitlab-pvc-opt
+      {{- if .Values.persistence.gitlabOpt.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ template "gitlab-ce.fullname" . }}-pvc-opt
       {{- else }}
         emptyDir: {}
       {{- end }}

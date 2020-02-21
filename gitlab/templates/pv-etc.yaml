@@ -19,5 +19,5 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - etc-pv
+          - pv-etc
 {{- end }}
