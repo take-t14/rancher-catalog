@@ -80,7 +80,7 @@ spec:
           mountPath: /etc
         - name: gitlab-pvc-log
           mountPath: /var/log/gitlab
-          - name: gitlab-pvc-opt
+        - name: gitlab-pvc-opt
           mountPath: /var/opt/gitlab
         resources:
 {{ toYaml .Values.resources | indent 10 }}
