@@ -79,9 +79,9 @@ spec:
         - name: gitlab-pvc-etc
           mountPath: /etc
         - name: gitlab-pvc-log
-          mountPath: /var/log/gitlab
+          mountPath: /var/log
         - name: gitlab-pvc-opt
-          mountPath: /var/opt/gitlab
+          mountPath: /var/opt
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
