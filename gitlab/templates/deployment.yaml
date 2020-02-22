@@ -72,7 +72,7 @@ spec:
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
-          failureThreshold: 10
+          failureThreshold: 20
         readinessProbe:
           httpGet:
             path: /help
@@ -81,7 +81,7 @@ spec:
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
-          failureThreshold: 3
+          failureThreshold: 10
         volumeMounts:
         - name: gitlab-pvc-etc
           mountPath: /etc
