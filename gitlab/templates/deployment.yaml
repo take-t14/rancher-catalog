@@ -50,6 +50,8 @@ spec:
           mkdir -p /opt/gitlab/embedded/etc && \
           touch /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf >/dev/null 2>&1 && \
+          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmall.conf >/dev/null 2>&1 && \
+          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-net.core.somaxconn.conf >/dev/null 2>&1 && \
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           /assets/wrapper
 #          tail -f /dev/null
