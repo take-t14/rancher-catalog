@@ -45,14 +45,14 @@ httpsPort: 443
 healthCheck:
   ## livenessPort Port of liveness probe endpoint
   liveness:
-    port: http
-    initialDelaySeconds: 1800
-    failureCount: 10
+    lPort: http
+    lInitDelaySec: 1800
+    lFailCnt: 10
   ## readinessPort Port of readiness probe endpoint
   readiness:
-    port: http
-    initialDelaySeconds: 1800
-    failureCount: 3
+    rPort: http
+    rInitDelaySec: 1800
+    rFailCnt: 3
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
