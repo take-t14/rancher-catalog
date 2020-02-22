@@ -48,7 +48,7 @@ spec:
         - "-c"
         - |
           ln -s /var/opt /opt && \
-          /usr/local/bin/wrapper && \
+          /assets/wrapper && \
           tail -f /dev/null
         ports:
         - name: ssh
