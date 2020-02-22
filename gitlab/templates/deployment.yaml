@@ -47,14 +47,12 @@ spec:
         - sh
         - "-c"
         - |
+          mkdir -p /opt/gitlab/embedded/etc && \
+          touch /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
+          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf >/dev/null 2>&1 && \
+          rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
+          /assets/wrapper && \
           tail -f /dev/null
-#          ln -s /var/opt /opt && \
-#          mkdir -p /var/opt/gitlab/embedded/etc && \
-#          touch /var/opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
-#          ln -s /var/opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /var/opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf >/dev/null 2>&1 && \
-#          rm -rf /var/opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
-#          /assets/wrapper >/dev/null 2>&1 && \
-#          tail -f /dev/null
         ports:
         - name: ssh
           containerPort: 22
