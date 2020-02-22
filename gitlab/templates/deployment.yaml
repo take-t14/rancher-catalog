@@ -65,23 +65,23 @@ spec:
         livenessProbe:
           httpGet:
             path: /help
-            port: {{ .Values.livenessPort }}
+            port: {{ .Values.healthCheck.liveness.port }}
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
-          initialDelaySeconds: 200
+          initialDelaySeconds: {{ .Values.healthCheck.liveness.initialDelaySeconds }}
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
-          failureThreshold: 200
+          failureThreshold: {{ .Values.healthCheck.liveness.failureThreshold }}
         readinessProbe:
           httpGet:
             path: /help
-            port: {{ .Values.readinessPort }}
-          initialDelaySeconds: 30
+            port: {{ .Values.healthCheck.readiness.port }}
+          initialDelaySeconds: {{ .Values.healthCheck.readiness.initialDelaySeconds }}
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
-          failureThreshold: 100
+          failureThreshold: {{ .Values.healthCheck.readiness.failureThreshold }}
         volumeMounts:
         - name: gitlab-pvc-etc
           mountPath: /etc

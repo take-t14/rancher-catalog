@@ -42,10 +42,17 @@ ingress:
 sshPort: 22
 httpPort: 80
 httpsPort: 443
-## livenessPort Port of liveness probe endpoint
-livenessPort: http
-## readinessPort Port of readiness probe endpoint
-readinessPort: http
+healthCheck:
+  ## livenessPort Port of liveness probe endpoint
+  liveness:
+    port: http
+    initialDelaySeconds: 1800
+    failureCount: 10
+  ## readinessPort Port of readiness probe endpoint
+  readiness:
+    port: http
+    initialDelaySeconds: 1800
+    failureCount: 3
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
