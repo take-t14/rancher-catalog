@@ -49,7 +49,7 @@ spec:
         - |
           ln -s /var/opt /opt && \
           mkdir -p /var/opt/gitlab/embedded/etc && \
-          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf && \
+          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /var/opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf >/dev/null 2>&1 && \
           /assets/wrapper >/dev/null 2>&1 && \
           tail -f /dev/null
         ports:
