@@ -52,7 +52,7 @@ healthCheck:
   readiness:
     port: http
     initialDelaySeconds: 1800
-    failureCount: 3
+    failureCount: 10
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
