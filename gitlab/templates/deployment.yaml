@@ -48,7 +48,8 @@ spec:
         - "-c"
         - |
           ln -s /var/opt /opt && \
-          /assets/wrapper && \
+          ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf && \
+          /assets/wrapper >/dev/null 2>&1 && \
           tail -f /dev/null
         ports:
         - name: ssh
