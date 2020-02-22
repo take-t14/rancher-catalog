@@ -43,11 +43,11 @@ spec:
         {{ end }}
         - name: EXTERNAL_URL
           value: {{ default "" .Values.externalUrl | quote }}
-        command:
-        - sh
-        - "-c"
-        - |
-          tail -f /dev/null
+#        command:
+#        - sh
+#        - "-c"
+#        - |
+#          tail -f /dev/null
         ports:
         - name: ssh
           containerPort: 22
