@@ -87,7 +87,6 @@ spec:
             - /bin/sh
             - -cx
             - |
-              tail -f /dev/null
               echo "current user id: `id`"
               mkdir -p {{ .Values.persistence.mountPath }}/postgresql/data
               chmod 700 {{ .Values.persistence.mountPath }}/postgresql/data
