@@ -437,7 +437,7 @@ spec:
 {{- else if and .Values.persistence.enabled (not .Values.persistence.annotations) }}
         - name: data
           persistentVolumeClaim:
-            claimName: {{ template "postgresql.fullname" . }}-pv
+            claimName: {{ template "postgresql.fullname" . }}-pvc
 {{- else if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
   volumeClaimTemplates:
     - metadata:
