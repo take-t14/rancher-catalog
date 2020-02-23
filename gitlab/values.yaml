@@ -46,19 +46,19 @@ healthCheck:
   ## livenessPort Port of liveness probe endpoint
   liveness:
     lPort: http
-    lInitDelaySec: 1800
+    lInitDelaySec: 200
     lTimeoutSec: 1
     lPeriodSec: 10
     lSuccessCnt: 1
-    lFailCnt: 20
+    lFailCnt: 160
   ## readinessPort Port of readiness probe endpoint
   readiness:
     rPort: http
-    rInitDelaySec: 1800
+    rInitDelaySec: 30
     rTimeoutSec: 1
     rPeriodSec: 10
     rSuccessCnt: 1
-    rFailCnt: 20
+    rFailCnt: 175
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
