@@ -166,7 +166,10 @@ extraEnv: []
 ## ref: https://www.postgresql.org/docs/current/static/runtime-config.html
 ##
 postgresqlConfiguration:
-  {"logDestination" : "'stderr'"}
+  {
+      "logDestination" : "'stderr'"
+    , "loggingCollector" : "on"
+  }
 
 ## PostgreSQL extended configuration
 ## As above, but _appended_ to the main configuration
