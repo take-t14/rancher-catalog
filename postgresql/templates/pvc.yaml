@@ -10,7 +10,7 @@ spec:
   storageClassName: local-storage
   {{- end }}
   accessModes:
-  - {{ .Values.persistence.accessMode | quote }}
+  - {{ .Values.persistence.accessModes | quote }}
   resources:
     requests:
       storage: {{ .Values.persistence.size | quote }}
