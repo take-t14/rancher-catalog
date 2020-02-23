@@ -109,7 +109,7 @@ replication:
 
 ## PostgreSQL admin password (used when `postgresqlUsername` is not `postgres`)
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-user-on-first-run (see note!)
-# postgresqlPostgresPassword: postgres
+postgresqlPostgresPassword: postgres
 
 ## PostgreSQL user (has superuser privileges if username is `postgres`)
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
@@ -193,8 +193,8 @@ postgresqlConfiguration:
 pgHbaConfiguration: |-
   host all all 0.0.0.0/0 md5
   host all all ::1/128 md5
-#   host all all localhost trust
-#   local all all trust
+   host all all localhost trust
+   local all all trust
 
 ## ConfigMap with PostgreSQL configuration
 ## NOTE: This will override postgresqlConfiguration and pgHbaConfiguration
