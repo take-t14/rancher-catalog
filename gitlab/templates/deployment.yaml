@@ -69,18 +69,18 @@ spec:
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
           initialDelaySeconds: {{ .Values.healthCheck.liveness.lInitDelaySec }}
-          timeoutSeconds: 1
-          periodSeconds: 10
-          successThreshold: 1
+          timeoutSeconds: {{ .Values.healthCheck.liveness.lTimeoutSec }}
+          periodSeconds: {{ .Values.healthCheck.liveness.lPeriodSec }}
+          successThreshold: {{ .Values.healthCheck.liveness.lSuccessCnt }}
           failureThreshold: {{ .Values.healthCheck.liveness.lFailCnt }}
         readinessProbe:
           httpGet:
             path: /help
             port: {{ .Values.healthCheck.readiness.rPort }}
           initialDelaySeconds: {{ .Values.healthCheck.readiness.rInitDelaySec }}
-          timeoutSeconds: 1
-          periodSeconds: 10
-          successThreshold: 1
+          timeoutSeconds: {{ .Values.healthCheck.readiness.rTimeoutSec }}
+          periodSeconds: {{ .Values.healthCheck.readiness.rPeriodSec }}
+          successThreshold: {{ .Values.healthCheck.readiness.rSuccessCnt }}
           failureThreshold: {{ .Values.healthCheck.readiness.rFailCnt }}
         volumeMounts:
         - name: gitlab-pvc-etc
