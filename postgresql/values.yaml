@@ -187,7 +187,6 @@ extraEnv: []
 pgHbaConfiguration: |-
   local all all trust
   host all all localhost trust
-  host all all postgresql md5
 
 ## ConfigMap with PostgreSQL configuration
 ## NOTE: This will override postgresqlConfiguration and pgHbaConfiguration
