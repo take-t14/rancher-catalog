@@ -114,4 +114,7 @@ persistence:
 
 env:
   tz: Asia/Tokyo
-  
+  lang: ja_JP.UTF-8
+  language: ja_JP:jp
+  lc_all: ja_JP.UTF-8
+
