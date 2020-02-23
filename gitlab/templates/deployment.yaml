@@ -55,10 +55,10 @@ spec:
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmall.conf >/dev/null 2>&1 && \
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-net.core.somaxconn.conf >/dev/null 2>&1 && \
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
-          apt -y install language-pack-ja-base language-pack-ja ibus-mozc && \
-          localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja" && \
-          source /etc/default/locale && \
           /assets/wrapper
+#          apt -y install language-pack-ja-base language-pack-ja ibus-mozc && \
+#          localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja" && \
+#          source /etc/default/locale && \
 #          tail -f /dev/null
         ports:
         - name: ssh
