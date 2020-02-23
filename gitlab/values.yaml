@@ -112,4 +112,6 @@ persistence:
     storageClass: local-storage
     accessMode: ReadWriteOnce
 
-
+env:
+  tz: Asia/Tokyo
+  
