@@ -187,7 +187,7 @@ extraEnv: []
 pgHbaConfiguration: |-
   host all all 0.0.0.0/0 md5
   host all all ::1/128 md5
-  local all all md5
+  local all all trust
   host all all postgresql md5
 
 ## ConfigMap with PostgreSQL configuration
