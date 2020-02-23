@@ -169,6 +169,8 @@ postgresqlConfiguration:
   {
       "logDestination" : "'stderr'"
     , "loggingCollector" : "on"
+    , "logStatement" : "'all'"
+    , "logMinDurationStatement" : "0"
   }
 
 ## PostgreSQL extended configuration
