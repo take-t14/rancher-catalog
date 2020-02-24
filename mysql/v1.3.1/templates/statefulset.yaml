@@ -56,6 +56,8 @@ spec:
           - |
             rm -fr /var/lib/mysql/lost+found
             mkdir -p /var/lib/mysql
+            chmod -R 750 /var/lib/mysql
+            chown -R mysql:mysql /var/lib/mysql
         volumeMounts:
         - name: data
           mountPath: /var/lib
