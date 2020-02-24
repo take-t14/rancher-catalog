@@ -53,7 +53,7 @@ questions:
   label: MySQL Password
   group: "MySQL Settings"
 - variable: persistence.enabled
-  default: "false"
+  default: "true"
   description: "Enable persistence using PVC"
   type: boolean
   required: true
