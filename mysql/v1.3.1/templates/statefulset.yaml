@@ -54,8 +54,8 @@ spec:
           - /bin/sh
           - -cx
           - |
-            if [ -e "/var/lib/mysql/lost+found" ]; then rm -fr /var/lib/mysql/lost+found; fi
-            if [ ! -e "/var/lib/mysql" ]; then mkdir -p /var/lib/mysql; fi
+            rm -fr /var/lib/mysql/lost+found
+            mkdir -p /var/lib/mysql
         volumeMounts:
         - name: data
           mountPath: /var/lib
