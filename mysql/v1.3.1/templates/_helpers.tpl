@@ -30,3 +30,14 @@ Generate chart secret name
 {{- define "mysql.secretName" -}}
 {{ default (include "mysql.fullname" .) .Values.existingSecret }}
 {{- end -}}
+
+{{/*
+Get the initialization scripts ConfigMap name.
+*/}}
+{{- define "mysql.initdbScriptsCM" -}}
+{{- if .Values.initdbScriptsConfigMap -}}
+{{- printf "%s" (tpl .Values.initdbScriptsConfigMap $) -}}
+{{- else -}}
+{{- printf "%s-init-scripts" (include "mysql.fullname" .) -}}
+{{- end -}}
+{{- end -}}
