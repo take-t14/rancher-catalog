@@ -54,8 +54,7 @@ spec:
           - /bin/sh
           - -cx
           - |
-            rm -fr /var/lib/mysql
-            mkdir -p /var/lib/mysql
+            rm -fr /var/lib/mysql/lost+found
         volumeMounts:
         - name: data
           mountPath: /var/lib/mysql
