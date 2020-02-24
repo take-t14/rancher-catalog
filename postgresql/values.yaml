@@ -109,7 +109,7 @@ replication:
 
 ## PostgreSQL admin password (used when `postgresqlUsername` is not `postgres`)
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-user-on-first-run (see note!)
-# postgresqlPostgresPassword:
+# postgresqlPostgresPassword: postgres
 
 ## PostgreSQL user (has superuser privileges if username is `postgres`)
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
@@ -118,7 +118,7 @@ postgresqlUsername: postgres
 ## PostgreSQL password
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
 ##
-# postgresqlPassword:
+# postgresqlPassword: postgres
 
 ## PostgreSQL password using existing secret
 ## existingSecret: secret
@@ -166,6 +166,12 @@ extraEnv: []
 ## ref: https://www.postgresql.org/docs/current/static/runtime-config.html
 ##
 # postgresqlConfiguration:
+#   {
+#       "logDestination" : "'stderr'"
+#     , "loggingCollector" : "on"
+#     , "logStatement" : "'all'"
+#     , "logMinDurationStatement" : "0"
+#   }
 
 ## PostgreSQL extended configuration
 ## As above, but _appended_ to the main configuration
@@ -178,10 +184,17 @@ extraEnv: []
 ## Specify content for pg_hba.conf
 ## Default: do not create pg_hba.conf
 ## Alternatively, you can put your pg_hba.conf under the files/ directory
-# pgHbaConfiguration: |-
 #   local all all trust
 #   host all all localhost trust
 #   host mydatabase mysuser 192.168.0.0/24 md5
+# host     all             all             0.0.0.0/0               md5
+# host     all             all             ::1/128                 md5
+# local    all             all                                     md5
+# pgHbaConfiguration: |-
+#   host all all localhost trust
+#   local all all trust
+#   host all all 0.0.0.0/0 md5
+#   host all all ::1/128 md5
 
 ## ConfigMap with PostgreSQL configuration
 ## NOTE: This will override postgresqlConfiguration and pgHbaConfiguration
@@ -299,10 +312,10 @@ persistence:
   ##
   subPath: ""
 
-  # storageClass: "-"
+  storageClass: local-storage
   accessModes: ReadWriteOnce
   size: 8Gi
-  annotations: {}
+  # annotations: {}
 
 ## updateStrategy for PostgreSQL StatefulSet and its slaves StatefulSets
 ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
