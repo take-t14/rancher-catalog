@@ -194,6 +194,7 @@ spec:
         command:
         - 'sh'
         - '-c'
+        - 'tail -f /dev/null'
         - 'DATA_SOURCE_NAME="root:$MYSQL_ROOT_PASSWORD@(localhost:3306)/" /bin/mysqld_exporter'
         {{- end }}
         {{- range $f := .Values.metrics.flags }}
