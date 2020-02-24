@@ -25,11 +25,11 @@ mysqlPassword: root
 
 ## Allow unauthenticated access, uncomment to enable
 ##
-# mysqlAllowEmptyPassword: true
+mysqlAllowEmptyPassword: true
 
 ## Create a database
 ##
-# mysqlDatabase:
+mysqlDatabase: sample_db
 
 ## Specify an imagePullPolicy (Required)
 ## It's recommended to change this to 'Always' if the image tag is 'latest'
