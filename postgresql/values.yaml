@@ -300,8 +300,7 @@ persistence:
   subPath: ""
 
   # storageClass: "-"
-  accessModes:
-    - ReadWriteOnce
+  accessModes: ReadWriteOnce
   size: 8Gi
   annotations: {}
 
