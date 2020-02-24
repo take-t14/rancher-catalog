@@ -32,26 +32,6 @@ questions:
     description: "Busybox image tag"
     type: string
     label: Busybox Image Tag
-- variable: mysqlDatabase
-  default: "admin"
-  description: "Name of database to create"
-  type: string
-  required: true
-  label: MySQL Database
-  group: "MySQL Settings"
-- variable: mysqlUser
-  default: "admin"
-  description: "Username of user to create"
-  type: string
-  required: true
-  label: MySQL Username
-  group: "MySQL Settings"
-- variable: mysqlPassword
-  default: ""
-  description: "MySQL Password for the new user, defaults to a random 10-character alphanumeric string if not set"
-  type: password
-  label: MySQL Password
-  group: "MySQL Settings"
 - variable: persistence.enabled
   default: "true"
   description: "Enable persistence using PVC"
