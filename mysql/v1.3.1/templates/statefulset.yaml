@@ -50,12 +50,12 @@ spec:
         imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
         resources:
 {{ toYaml .Values.initContainer.resources | indent 10 }}
-          command:
-            - /bin/sh
-            - -cx
-            - |
-              rm -fr /var/lib/mysql/lost+found
-              mkdir -p /var/lib/mysql
+        command:
+          - /bin/sh
+          - -cx
+          - |
+            rm -fr /var/lib/mysql/lost+found
+            mkdir -p /var/lib/mysql
         volumeMounts:
         - name: data
           mountPath: /var/lib
