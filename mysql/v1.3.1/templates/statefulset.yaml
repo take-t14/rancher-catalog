@@ -51,10 +51,10 @@ spec:
         resources:
 {{ toYaml .Values.initContainer.resources | indent 10 }}
         command:
-          - sh
-          - -c
+          - /bin/sh
+          - -cx
           - |
-            if [ -e "/var/lib/mysql/lost+found" ]; then rm -fr /var/lib/mysql/lost+found; fi && \
+            if [ -e "/var/lib/mysql/lost+found" ]; then rm -fr /var/lib/mysql/lost+found; fi
             if [ ! -e "/var/lib/mysql" ]; then mkdir -p /var/lib/mysql; fi
         volumeMounts:
         - name: data
