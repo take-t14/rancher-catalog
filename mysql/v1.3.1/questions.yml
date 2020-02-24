@@ -68,7 +68,7 @@ questions:
     label: Volume Size
     required: true
   - variable: persistence.storageClass
-    default: ""
+    default: "local-storage"
     description: "If undefined or null, uses the default StorageClass. Defaults to null."
     type: storageclass
     label: Default storageClass

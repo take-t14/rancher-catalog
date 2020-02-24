@@ -230,7 +230,13 @@ spec:
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
+          {{- if ne .Values.persistence.existingClaim "" }}
+          {{- with .Values.persistence.existingClaim }}
+          claimName: {{ tpl . $ }}
+          {{- end }}
+          {{- else }}
           claimName: {{ template "mysql.fullname" . }}-pvc
+          {{- end }}
       {{- else }}
         emptyDir: {}
       {{- end -}}
