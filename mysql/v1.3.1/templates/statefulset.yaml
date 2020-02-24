@@ -162,7 +162,10 @@ spec:
           subPath: {{ $key }}
         {{- end -}}
         {{- end }}
-        {{- if .Values.initializationFiles }}
+        {{- if or (.Files.Glob "files/docker-entrypoint-initdb.d/*.{sh,sql,sql.gz}") .Values.initdbScriptsConfigMap .Values.initdbScripts }}
+        - name: custom-init-scripts
+          mountPath: /docker-entrypoint-initdb.d/
+        {{- else if .Values.initializationFiles }}
         - name: migrations
           mountPath: /docker-entrypoint-initdb.d
         {{- end }}
@@ -221,7 +224,11 @@ spec:
         configMap:
           name: {{ template "mysql.fullname" . }}-configuration
       {{- end }}
-      {{- if .Values.initializationFiles }}
+      {{- if  or (.Files.Glob "files/docker-entrypoint-initdb.d/*.{sh,sql,sql.gz}") .Values.initdbScriptsConfigMap .Values.initdbScripts }}
+      - name: custom-init-scripts
+        configMap:
+          name: {{ template "postgresql.initdbScriptsCM" . }}
+      {{- else if .Values.initializationFiles }}
       - name: migrations
         configMap:
           name: {{ template "mysql.fullname" . }}-initialization
@@ -231,7 +238,7 @@ spec:
         secret:
           secretName: {{ .Values.ssl.secret }}
       {{- end }}
-      - name: data
+    - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           {{- if .Values.persistence.existingClaim }}
