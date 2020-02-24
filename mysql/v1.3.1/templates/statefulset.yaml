@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ template "mysql.fullname" . }}
   namespace: {{ .Release.Namespace }}
@@ -230,7 +230,7 @@ spec:
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          claimName: {{ .Values.persistence.existingClaim | default (include "mysql.fullname" .) }}
+          claimName: {{ .Values.persistence.existingClaim | default (include "mysql.fullname" .) }}-pvc
       {{- else }}
         emptyDir: {}
       {{- end -}}
