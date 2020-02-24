@@ -227,7 +227,7 @@ spec:
       {{- if  or (.Files.Glob "files/docker-entrypoint-initdb.d/*.{sh,sql,sql.gz}") .Values.initdbScriptsConfigMap .Values.initdbScripts }}
       - name: custom-init-scripts
         configMap:
-          name: {{ template "postgresql.initdbScriptsCM" . }}
+          name: {{ template "mysql.initdbScriptsCM" . }}
       {{- else if .Values.initializationFiles }}
       - name: migrations
         configMap:
