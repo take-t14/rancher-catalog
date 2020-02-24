@@ -238,7 +238,7 @@ spec:
         secret:
           secretName: {{ .Values.ssl.secret }}
       {{- end }}
-    - name: data
+      - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           {{- if .Values.persistence.existingClaim }}
