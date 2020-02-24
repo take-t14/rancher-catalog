@@ -184,7 +184,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'sleep 30'
         - 'DATA_SOURCE_NAME="root@(localhost:3306)/" /bin/mysqld_exporter'
         {{- else }}
         env:
@@ -196,7 +195,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'sleep 30'
         - 'DATA_SOURCE_NAME="root:$MYSQL_ROOT_PASSWORD@(localhost:3306)/" /bin/mysqld_exporter'
         {{- end }}
         {{- range $f := .Values.metrics.flags }}
