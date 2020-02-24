@@ -10,7 +10,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   local:
-    path: /var/lib/mysql
+    path: /var/lib
   persistentVolumeReclaimPolicy: Retain
   nodeAffinity:
     required:
