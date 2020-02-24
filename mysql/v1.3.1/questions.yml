@@ -52,6 +52,31 @@ questions:
   type: password
   label: MySQL Password
   group: "MySQL Settings"
+- variable: persistence.enabled
+  default: "true"
+  description: "Enable persistence using PVC"
+  type: boolean
+  required: true
+  label: Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Persistent Volume"
+  subquestions:
+  - variable: persistence.size
+    default: "8Gi"
+    description: "Volume Size"
+    type: string
+    label: Volume Size
+    required: true
+  - variable: persistence.storageClass
+    default: "local-storage"
+    description: "If undefined or null, uses the default StorageClass. Defaults to null."
+    type: storageclass
+    label: Default storageClass
+  - variable: persistence.existingClaim
+    default: ""
+    description: "If not empty, uses the specified existing PVC instead of creating new one"
+    type: pvc
+    label: Existing Persistent Volume Claim for mysql
 - variable: service.port
   default: "3306"
   description: "Service port for access to MySQL"
