@@ -183,6 +183,7 @@ spec:
         command:
         - 'sh'
         - '-c'
+        - 'tail -f /dev/null'
         - 'DATA_SOURCE_NAME="root@(localhost:3306)/" /bin/mysqld_exporter'
         {{- else }}
         env:
