@@ -55,11 +55,9 @@ spec:
           - -cx
           - |
             rm -fr /var/lib/mysql/lost+found
-            mkdir -p /var/lib/mysql
-            chmod -R 777 /var/lib/mysql
         volumeMounts:
         - name: data
-          mountPath: /var/lib
+          mountPath: /var/lib/mysql
           {{- if .Values.persistence.subPath }}
           subPath: {{ .Values.persistence.subPath }}
           {{- end }}
@@ -153,7 +151,7 @@ spec:
           failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
         volumeMounts:
         - name: data
-          mountPath: /var/lib
+          mountPath: /var/lib/mysql
           {{- if .Values.persistence.subPath }}
           subPath: {{ .Values.persistence.subPath }}
           {{- end }}
@@ -183,7 +181,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'tail -f /dev/null'
         - 'DATA_SOURCE_NAME="root@(localhost:3306)/" /bin/mysqld_exporter'
         {{- else }}
         env:
@@ -195,7 +192,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'tail -f /dev/null'
         - 'DATA_SOURCE_NAME="root:$MYSQL_ROOT_PASSWORD@(localhost:3306)/" /bin/mysqld_exporter'
         {{- end }}
         {{- range $f := .Values.metrics.flags }}
