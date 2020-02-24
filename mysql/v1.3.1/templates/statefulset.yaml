@@ -50,10 +50,10 @@ spec:
         imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
         resources:
 {{ toYaml .Values.initContainer.resources | indent 10 }}
-        command:  ["rm", "-fr", "/var/lib/mysql/lost+found"]
+        command:  ["rm", "-fr", "/var/lib/mysql/lost+found", ";", "mkdir", "-p", "/var/lib/mysql"]
         volumeMounts:
         - name: data
-          mountPath: /var/lib/mysql
+          mountPath: /var/lib
           {{- if .Values.persistence.subPath }}
           subPath: {{ .Values.persistence.subPath }}
           {{- end }}
@@ -147,7 +147,7 @@ spec:
           failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
         volumeMounts:
         - name: data
-          mountPath: /var/lib/mysql
+          mountPath: /var/lib
           {{- if .Values.persistence.subPath }}
           subPath: {{ .Values.persistence.subPath }}
           {{- end }}
