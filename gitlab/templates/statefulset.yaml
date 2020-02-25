@@ -44,7 +44,7 @@ spec:
         - name: EXTERNAL_URL
           value: {{ default "" .Values.externalUrl | quote }}
         - name: TZ
-          value: {{ .Values.env.tz }}
+          value: {{ .Values.env.timezone }}
         - name: LANG
           value: {{ .Values.env.lang }}
         - name: LANGUAGE

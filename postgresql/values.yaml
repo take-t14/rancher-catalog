@@ -40,6 +40,11 @@ image:
 ## String to fully override postgresql.fullname template
 ##
 # fullnameOverride:
+env:
+  timezone: 'Asia/Tokyo'
+  lang: ja_JP.UTF-8
+  language: ja_JP:jp
+  lc_all: ja_JP.UTF-8
 
 ##
 ## Init containers parameters:

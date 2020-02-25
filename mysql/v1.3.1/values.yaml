@@ -192,7 +192,11 @@ ssl:
 ##
 ## Default: nil (mysql will use image's default timezone, normally UTC)
 ## Example: 'Australia/Sydney'
-# timezone:
+env:
+  timezone: 'Asia/Tokyo'
+  lang: ja_JP.UTF-8
+  language: ja_JP:jp
+  lc_all: ja_JP.UTF-8
 
 # Deployment Annotations
 deploymentAnnotations: {}
