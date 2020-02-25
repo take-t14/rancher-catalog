@@ -148,10 +148,10 @@ metrics:
     # prometheus.io/scrape: "true"
     # prometheus.io/port: "9104"
   livenessProbe:
-    initialDelaySeconds: 15
+    initialDelaySeconds: 75
     timeoutSeconds: 5
   readinessProbe:
-    initialDelaySeconds: 5
+    initialDelaySeconds: 65
     timeoutSeconds: 1
   flags: []
   serviceMonitor:
