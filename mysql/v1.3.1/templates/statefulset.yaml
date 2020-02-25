@@ -123,6 +123,13 @@ spec:
         ports:
         - name: mysql
           containerPort: 3306
+        command:
+        - sh
+        - "-c"
+        - |
+          apt-get update && \
+          apt-get -y install task-japanese locales-all && \
+          /entrypoint.sh
         livenessProbe:
           exec:
             command:
@@ -190,8 +197,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'apt-get update'
-        - 'apt-get -y install task-japanese locales-all'
         - 'DATA_SOURCE_NAME="root@(localhost:3306)/" /bin/mysqld_exporter'
         {{- else }}
         env:
@@ -203,8 +208,6 @@ spec:
         command:
         - 'sh'
         - '-c'
-        - 'apt-get update'
-        - 'apt-get -y install task-japanese locales-all'
         - 'DATA_SOURCE_NAME="root:$MYSQL_ROOT_PASSWORD@(localhost:3306)/" /bin/mysqld_exporter'
         {{- end }}
         {{- range $f := .Values.metrics.flags }}
