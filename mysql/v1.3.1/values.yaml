@@ -72,14 +72,14 @@ nodeSelector: {}
 tolerations: []
 
 livenessProbe:
-  initialDelaySeconds: 90
+  initialDelaySeconds: 150
   periodSeconds: 10
   timeoutSeconds: 5
   successThreshold: 1
   failureThreshold: 3
 
 readinessProbe:
-  initialDelaySeconds: 65
+  initialDelaySeconds: 125
   periodSeconds: 10
   timeoutSeconds: 1
   successThreshold: 1
@@ -148,10 +148,10 @@ metrics:
     # prometheus.io/scrape: "true"
     # prometheus.io/port: "9104"
   livenessProbe:
-    initialDelaySeconds: 75
+    initialDelaySeconds: 135
     timeoutSeconds: 5
   readinessProbe:
-    initialDelaySeconds: 65
+    initialDelaySeconds: 125
     timeoutSeconds: 1
   flags: []
   serviceMonitor:
