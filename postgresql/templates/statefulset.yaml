@@ -132,13 +132,6 @@ spec:
           securityContext:
             runAsUser: {{ .Values.securityContext.runAsUser }}
           {{- end }}
-          command:
-            - sh
-            - "-c"
-            - |
-              apt-get update && \
-              apt-get -y install task-japanese locales-all && \
-              /run.sh
           env:
             - name: TZ
               value: {{ .Values.timezone }}
