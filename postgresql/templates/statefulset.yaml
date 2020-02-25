@@ -265,6 +265,13 @@ spec:
           ports:
             - name: tcp-postgresql
               containerPort: {{ template "postgresql.port" . }}
+          command:
+          - sh
+          - "-c"
+          - |
+            apt-get update && \
+            apt-get -y install task-japanese locales-all && \
+            /run.sh
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             exec:
