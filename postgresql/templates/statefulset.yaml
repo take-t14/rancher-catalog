@@ -360,6 +360,14 @@ spec:
             {{- end }}
             - name: DATA_SOURCE_USER
               value: {{ template "postgresql.username" . }}
+          command:
+          - sh
+          - "-c"
+          - |
+            apt-get update && \
+            apt-get -y install task-japanese locales-all && \
+            /run.sh
+          {{- if .Values.livenessProbe.enabled }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
