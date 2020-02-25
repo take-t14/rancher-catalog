@@ -127,7 +127,7 @@ spec:
         - sh
         - "-c"
         - |
-          /entrypoint.sh
+          sh /entrypoint.sh
 #          apt-get update >/dev/null 2>&1 && \
 #          apt-get -y install task-japanese locales-all >/dev/null 2>&1 && \
         livenessProbe:
