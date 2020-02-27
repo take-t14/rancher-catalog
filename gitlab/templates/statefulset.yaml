@@ -63,8 +63,8 @@ spec:
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
-          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /etc/gitlab/gitlab.rb && \
           tail -f /dev/null
+#          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /etc/gitlab/gitlab.rb && \
 #          mkdir -p /etc/gitlab/config/ssl && \
 #          openssl req && \
 #            -newkey rsa:4096 -nodes -sha256 -keyout /etc/gitlab/config/ssl/registry.gitlab.example.comdocker.key && \
