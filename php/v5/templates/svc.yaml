@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: php5-fpm-service
+  labels:
+    app: php5-fpm
+spec:
+  selector:
+    app: php5-fpm
+  ports:
+    - protocol: TCP
+      port: 9000

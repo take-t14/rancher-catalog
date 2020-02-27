@@ -50,7 +50,7 @@ healthCheck:
     lTimeoutSec: 1
     lPeriodSec: 10
     lSuccessCnt: 1
-    lFailCnt: 260
+    lFailCnt: 160
   ## readinessPort Port of readiness probe endpoint
   readiness:
     rPort: http
@@ -58,7 +58,7 @@ healthCheck:
     rTimeoutSec: 1
     rPeriodSec: 10
     rSuccessCnt: 1
-    rFailCnt: 275
+    rFailCnt: 175
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/

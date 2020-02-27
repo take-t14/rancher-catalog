@@ -1,0 +1,15 @@
+apiVersion: v1
+name: apache
+version: 1.0.0
+appVersion: 2.4.0
+description: Chart for apache.
+keywords:
+  - apache
+home: https://httpd.apache.org/
+icon: https://www.apache.org/images/SupportApache-small.png
+sources:
+  - https://github.com/apache/httpd
+maintainers:
+- name: tadanobu.hatakeyama
+  email: hatakeyama@d-a.co.jp
+engine: gotpl

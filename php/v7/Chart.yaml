@@ -1,0 +1,16 @@
+apiVersion: v1
+name: php
+version: 1.0.0
+appVersion: 7.0.0
+description: Chart for php7.
+keywords:
+  - php
+  - php-fpm
+home: https://www.php.net/
+icon: https://www.php.net/images/logos/new-php-logo.png
+sources:
+  - https://github.com/php/php-src
+maintainers:
+- name: tadanobu.hatakeyama
+  email: hatakeyama@d-a.co.jp
+engine: gotpl
