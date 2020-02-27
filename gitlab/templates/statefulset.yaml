@@ -63,14 +63,10 @@ spec:
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
-          tail -f /dev/null
-#          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /etc/gitlab/gitlab.rb && \
-#          mkdir -p /etc/gitlab/config/ssl && \
-#          openssl req && \
-#            -newkey rsa:4096 -nodes -sha256 -keyout /etc/gitlab/config/ssl/registry.gitlab.example.comdocker.key && \
-#            -x509 -days 3650 -out /etc/gitlab/config/ssl/registry.gitlab.example.com.crt && \
-#            -subj /C=JP/ST=Hyogo/L=Kobe-shi/O=DIGITAL ALLIANCE HOLDINGS CO.,LTD/OU=Solution Division/CN=registry.gitlab.example.com/emailAddress=hatakeyama@d-a.co.jp && \
-#          /assets/wrapper
+          if [[ -e /etc/gitlab/gitlab.rb ]]; then sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /etc/gitlab/gitlab.rb; fi && \
+          if [[ ! -e /etc/gitlab/config/ssl ]]; then mkdir -p /etc/gitlab/config/ssl; openssl req -newkey rsa:4096 -nodes -sha256 -keyout /etc/gitlab/config/ssl/registry.gitlab.example.comdocker.key -x509 -days 3650 -out /etc/gitlab/config/ssl/registry.gitlab.example.com.crt -subj /C=JP/ST=Hyogo/L=Kobe-shi/O=DIGITAL ALLIANCE HOLDINGS CO.,LTD/OU=Solution Division/CN=registry.gitlab.example.com/emailAddress=hatakeyama@d-a.co.jp; fi && \
+          /assets/wrapper
+#          tail -f /dev/null
         ports:
         - name: ssh
           containerPort: 22
