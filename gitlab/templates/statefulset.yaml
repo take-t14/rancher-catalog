@@ -63,6 +63,7 @@ spec:
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
+          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /etc/gitlab/gitlab.rb
           /assets/wrapper
 #          tail -f /dev/null
         ports:
