@@ -29,12 +29,12 @@ serviceType: LoadBalancer
 ingress:
   annotations:
       kubernetes.io/ingress.class: nginx
-      kubernetes.io/tls-acme: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       nginx.ingress.kubernetes.io/ingress.allow-http: "false"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  enabled: true
+#      kubernetes.io/tls-acme: "true"
+enabled: true
   tls: 
       - secretName: gitlab-ssl-secret
         hosts:
