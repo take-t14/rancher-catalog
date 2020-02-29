@@ -105,9 +105,9 @@ spec:
         - name: gitlab-pvc-opt
           mountPath: /var/opt
         - name: tls-crt
-          mountPath: /etc/gitlab/ssl/registry.example.com.crt
+          mountPath: /etc/ssl/crt
         - name: tls-key
-          mountPath: /etc/gitlab/ssl/registry.example.com.key
+          mountPath: /etc/ssl/key
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -137,10 +137,12 @@ spec:
           secretName: gitlab-ssl-secret
           items:
           - key: tls.crt
+            path: registry.example.com.crt
       - name: tls-key
         secret:
           secretName: gitlab-ssl-secret
           items:
           - key: tls.key
+            path: registry.example.com.key
 {{ else }}
 {{ end }}
