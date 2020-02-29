@@ -62,6 +62,8 @@ spec:
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-net.core.somaxconn.conf >/dev/null 2>&1 && \
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
           sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com'/" /opt/gitlab/etc/gitlab.rb.template && \
+          ln -s /etc/ssl/crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt
+          ln -s /etc/ssl/crt/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
           /assets/wrapper
