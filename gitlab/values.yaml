@@ -32,7 +32,7 @@ ingress:
       kubernetes.io/tls-acme: "true"
   enabled: true
   tls: 
-      - secretName: registry.example.com
+      - secretName: gitlab-ssl-secret
         hosts:
           - registry.example.com
   url: registry.example.com
