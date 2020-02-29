@@ -50,7 +50,7 @@ httpsPort: 443
 healthCheck:
   ## livenessPort Port of liveness probe endpoint
   liveness:
-    lPort: http
+    lPort: https
     lInitDelaySec: 200
     lTimeoutSec: 1
     lPeriodSec: 10
@@ -58,7 +58,7 @@ healthCheck:
     lFailCnt: 160
   ## readinessPort Port of readiness probe endpoint
   readiness:
-    rPort: http
+    rPort: https
     rInitDelaySec: 30
     rTimeoutSec: 1
     rPeriodSec: 10
