@@ -97,7 +97,7 @@ spec:
           httpGet:
             path: /help
             port: {{ .Values.healthCheck.readiness.rPort }}
-            scheme: { .Values.healthCheck.liveness.rScheme }}
+            scheme: { .Values.healthCheck.readiness.rScheme }}
           initialDelaySeconds: {{ .Values.healthCheck.readiness.rInitDelaySec }}
           timeoutSeconds: {{ .Values.healthCheck.readiness.rTimeoutSec }}
           periodSeconds: {{ .Values.healthCheck.readiness.rPeriodSec }}
