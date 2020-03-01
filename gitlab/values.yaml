@@ -12,7 +12,8 @@ image: gitlab/gitlab-ce:latest
 ## The URL (with protocol) that your users will use to reach the install.
 ## ref: https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
 ##
-externalUrl: https://registry.example.com/
+externalUrl: https://gitlab.cluster.local/
+# externalUrl: https://registry.example.com/
 
 ## Change the initial default admin password if set. If not set, you'll be
 ## able to set it when you first visit your install.
@@ -37,10 +38,13 @@ ingress:
       nginx.ingress.kubernetes.io/secure-backends: "true"
   enabled: true
   tls: 
-      - secretName: gitlab-ssl-secret
-        hosts:
-          - registry.example.com
-  url: registry.example.com
+    - hosts:
+      - gitlab.cluster.local
+      secretName: secret-ssl-gitlab
+    - hosts:
+      - registry.example.com
+      secretName: secret-ssl-regist
+  url: gitlab.cluster.local
 
 ## Configure external service ports
 ## ref: http://kubernetes.io/docs/user-guide/services/

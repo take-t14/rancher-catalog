@@ -30,7 +30,13 @@ spec:
           serviceName: {{ template "gitlab-ce.fullname" . }}
           servicePort: {{ .Values.httpPort }}
     {{- end }}
-
+  - host: registry.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "gitlab-ce.fullname" . }}
+          servicePort: {{ .Values.registPort }}
 {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
