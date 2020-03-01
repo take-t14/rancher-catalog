@@ -65,8 +65,8 @@ spec:
           sed -i "s@\#.nginx\['ssl_certificate'\].=.\"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.crt\"@nginx\['ssl_certificate'\] = \"/etc/gitlab/ssl/registry\.example\.com\.crt\"@" /opt/gitlab/etc/gitlab.rb.template && \
           sed -i "s@\# nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.key\"@nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/registry\.example\.com\.key\"@" /opt/gitlab/etc/gitlab.rb.template && \
           mkdir -p /etc/gitlab/ssl && \
-          ln -s /etc/ssl/crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
-          ln -s /etc/ssl/key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
+          ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
+          ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
           /assets/wrapper
@@ -112,10 +112,14 @@ spec:
           mountPath: /var/log
         - name: gitlab-pvc-opt
           mountPath: /var/opt
-        - name: tls-crt
-          mountPath: /etc/ssl/crt
-        - name: tls-key
-          mountPath: /etc/ssl/key
+        - name: regist-crt
+          mountPath: /etc/ssl/regist-crt
+        - name: regist-key
+          mountPath: /etc/ssl/regist-key
+        - name: gitlab-crt
+          mountPath: /etc/ssl/gitlab-crt
+        - name: gitlab-key
+          mountPath: /etc/ssl/gitlab-key
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -140,17 +144,29 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
-      - name: tls-crt
+      - name: regist-crt
         secret:
           secretName: secret-ssl-regist
           items:
           - key: tls.crt
             path: registry.example.com.crt
-      - name: tls-key
+      - name: regist-key
         secret:
           secretName: secret-ssl-regist
           items:
           - key: tls.key
             path: registry.example.com.key
+      - name: gitlab-crt
+        secret:
+          secretName: secret-ssl-gitlab
+          items:
+          - key: tls.crt
+            path: gitlab.cluster.local.crt
+      - name: gitlab-key
+        secret:
+          secretName: secret-ssl-gitlab
+          items:
+          - key: tls.key
+            path: gitlab.cluster.local.key
 {{ else }}
 {{ end }}
