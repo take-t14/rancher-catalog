@@ -47,6 +47,7 @@ ingress:
 sshPort: 22
 httpPort: 80
 httpsPort: 443
+registPort: 4567
 healthCheck:
   ## livenessPort Port of liveness probe endpoint
   liveness:
