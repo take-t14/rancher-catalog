@@ -142,13 +142,13 @@ spec:
       {{- end }}
       - name: tls-crt
         secret:
-          secretName: gitlab-ssl-secret
+          secretName: secret-ssl-regist
           items:
           - key: tls.crt
             path: registry.example.com.crt
       - name: tls-key
         secret:
-          secretName: gitlab-ssl-secret
+          secretName: secret-ssl-regist
           items:
           - key: tls.key
             path: registry.example.com.key
