@@ -85,7 +85,7 @@ spec:
           httpGet:
             path: /help
             port: {{ .Values.healthCheck.liveness.lPort }}
-            scheme: { .Values.healthCheck.liveness.lScheme }}
+            scheme: {{ .Values.healthCheck.liveness.lScheme }}
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
           initialDelaySeconds: {{ .Values.healthCheck.liveness.lInitDelaySec }}
@@ -97,7 +97,7 @@ spec:
           httpGet:
             path: /help
             port: {{ .Values.healthCheck.readiness.rPort }}
-            scheme: { .Values.healthCheck.readiness.rScheme }}
+            scheme: {{ .Values.healthCheck.readiness.rScheme }}
           initialDelaySeconds: {{ .Values.healthCheck.readiness.rInitDelaySec }}
           timeoutSeconds: {{ .Values.healthCheck.readiness.rTimeoutSec }}
           periodSeconds: {{ .Values.healthCheck.readiness.rPeriodSec }}
