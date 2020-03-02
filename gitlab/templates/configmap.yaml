@@ -21,9 +21,5 @@ data:
     gitlab_shell['auth_file'] = '/gitlab-data/ssh/authorized_keys';
     git_data_dir '/gitlab-data/git-data';
     gitlab_ci['builds_directory'] = '/gitlab-data/builds';
-    gitlab_rails['registry_enabled'] = true;
-    registry_external_url 'https://registry.example.com:4567';
-    nginx['ssl_certificate'] = '/etc/gitlab/ssl/registry.example.com.crt';
-    nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/registry.example.com.key;
 
 

@@ -61,15 +61,15 @@ spec:
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmall.conf >/dev/null 2>&1 && \
           ln -s /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf /opt/gitlab/embedded/etc/90-omnibus-gitlab-net.core.somaxconn.conf >/dev/null 2>&1 && \
           rm -rf /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.shmmax.conf && \
+          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com:4567'/" /opt/gitlab/etc/gitlab.rb.template && \
+          sed -i "s@\#.nginx\['ssl_certificate'\].=.\"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.crt\"@nginx\['ssl_certificate'\] = \"/etc/gitlab/ssl/registry\.example\.com\.crt\"@" /opt/gitlab/etc/gitlab.rb.template && \
+          sed -i "s@\# nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.key\"@nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/registry\.example\.com\.key\"@" /opt/gitlab/etc/gitlab.rb.template && \
           mkdir -p /etc/gitlab/ssl && \
           ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
           ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
           apt-get update && \
           apt-get -y install task-japanese locales-all && \
           /assets/wrapper
-#          sed -i "s/\# registry_external_url 'https:\/\/registry.example.com'/registry_external_url 'https:\/\/registry.example.com:4567'/" /opt/gitlab/etc/gitlab.rb.template && \
-#          sed -i "s@\#.nginx\['ssl_certificate'\].=.\"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.crt\"@nginx\['ssl_certificate'\] = \"/etc/gitlab/ssl/registry\.example\.com\.crt\"@" /opt/gitlab/etc/gitlab.rb.template && \
-#          sed -i "s@\# nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.key\"@nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/registry\.example\.com\.key\"@" /opt/gitlab/etc/gitlab.rb.template && \
 #          openssl req -newkey rsa:4096 -nodes -sha256 -keyout /etc/gitlab/ssl/registry.example.com.key -x509 -days 3650 \
 #            -out /etc/gitlab/ssl/registry.example.com.crt \
 #            -subj "/C=JP/ST=Hyogo/L=Kobe-shi/O=DIGITAL ALLIANCE HOLDINGS CO.,LTD/OU=Solution Division/CN=registry.example.com/emailAddress=hatakeyama@d-a.co.jp" && \
