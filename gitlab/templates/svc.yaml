@@ -18,6 +18,7 @@ spec:
     targetPort: http
   - name: https
     port: {{ .Values.httpsPort | int }}
+    targetPort: https
   - name: regist
     port: {{ .Values.registPort | int }}
     targetPort: {{ .Values.registPort | int }}
