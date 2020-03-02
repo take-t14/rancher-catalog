@@ -9,7 +9,7 @@ keywords:
 home: https://www.isc.org/bind/
 icon: https://pbs.twimg.com/profile_images/1068225931108474880/Yss1fZJL_400x400.jpg
 sources:
-  - https://gitlab.cluster.local/
+  - https://gitlab.example.com/
 maintainers:
 - name: tadanobu.hatakeyama
   email: hatakeyama@d-a.co.jp

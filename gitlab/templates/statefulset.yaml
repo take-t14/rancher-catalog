@@ -162,12 +162,12 @@ spec:
           secretName: secret-ssl-gitlab
           items:
           - key: tls.crt
-            path: gitlab.cluster.local.crt
+            path: gitlab.example.com.crt
       - name: gitlab-key
         secret:
           secretName: secret-ssl-gitlab
           items:
           - key: tls.key
-            path: gitlab.cluster.local.key
+            path: gitlab.example.com.key
 {{ else }}
 {{ end }}
