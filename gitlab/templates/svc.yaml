@@ -20,6 +20,6 @@ spec:
     port: {{ .Values.httpsPort | int }}
   - name: regist
     port: {{ .Values.registPort | int }}
-    targetPort: https
+    targetPort: {{ .Values.registPort | int }}
   selector:
     app: {{ template "gitlab-ce.fullname" . }}
