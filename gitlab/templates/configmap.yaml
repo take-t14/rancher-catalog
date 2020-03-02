@@ -22,4 +22,3 @@ data:
     git_data_dir '/gitlab-data/git-data';
     gitlab_ci['builds_directory'] = '/gitlab-data/builds';
 
-
