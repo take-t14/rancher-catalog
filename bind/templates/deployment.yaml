@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: dns
-        image: dns:latest
+        image: gitlab-ce-gitlab-ce.gitlab-ce:4567/hatake_t14/php/bind:latest
         ports:
         - name: dns
           containerPort: 53
