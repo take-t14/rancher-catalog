@@ -4,6 +4,9 @@ metadata:
   name: dns
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: dns
   template:
     metadata:
       labels:
