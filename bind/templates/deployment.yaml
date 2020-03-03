@@ -6,7 +6,7 @@ spec:
   replicas: 1
     selector:
         matchLabels:
-          service: ambassador
+          service: dns
   template:
     metadata:
       labels:
