@@ -15,8 +15,6 @@ spec:
       containers:
       - name: dns
         image: registry.example.com/hatake_t14/php/bind:latest
-      imagePullSecrets:
-      - name: secret-ssl-regist
         ports:
         - name: dns
           containerPort: 53
