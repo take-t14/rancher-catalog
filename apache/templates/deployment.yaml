@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: apache
-        image: php-gke-apache:latest
+        image: registry.example.com/hatake_t14/php/apache:latest
 #        env:
 #        - name: LC_CTYPE
 #          value: ja_JP.utf8
