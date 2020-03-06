@@ -1,21 +1,12 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: apache-pv
+  name: apache-php-pv
 spec:
   storageClassName: local-storage
   capacity:
     storage: 1Gi
   accessModes:
   - ReadWriteOnce
-  local:
-    path: /var/www
-  persistentVolumeReclaimPolicy: Retain
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - worker
+  hostPath:
+    path: /var/log/httpd

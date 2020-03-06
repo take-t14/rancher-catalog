@@ -28,11 +28,11 @@ spec:
         - sh
         - "-c"
         - |
-          ln -s /var/www/example1.co.jp /home/example1.co.jp && \
-          ln -s /var/www/example2.co.jp /home/example2.co.jp && \
-          ln -s /var/www/laravel-project /home/laravel-project && \
-          ln -s /var/www/nuxtapp /home/nuxtapp && \
-          apachectl -D FOREGROUND
+          ln -s /var/www/html/php-example/example1.co.jp /home/example1.co.jp && \
+          ln -s /var/www/html/php-example/example2.co.jp /home/example2.co.jp && \
+          ln -s /var/www/html/php-example/laravel-project /home/laravel-project && \
+          ln -s /var/www/html/php-example/nuxtapp /home/nuxtapp && \
+          supervisord -c /etc/supervisord.conf
         ports:
         - name: http
           containerPort: 80
@@ -40,10 +40,10 @@ spec:
           containerPort: 443
         volumeMounts:
         - name: disk
-          mountPath: "/var/www"
+          mountPath: "/home/nuxtapp/log"
         securityContext:
           privileged: true
       volumes:
       - name: disk
         persistentVolumeClaim:
-          claimName: apache-pvc
+          claimName: apache-php-pvc

@@ -1,5 +1,7 @@
 FROM centos:centos7.2.1511
 
+ENV GIT_PROJECT https://github.com/take-t14/php-example.git
+
 ##################
 # apache
 COPY ./apache/apache-install.sh ~/apache-install.sh
@@ -53,6 +55,8 @@ COPY ./supervisord/supervisord.conf /etc/supervisord.conf
 
 # git, subversion
 RUN yum -y update && yum -y subversion git && yum clean all
+RUN mkdir -p /var/www/html/php-example
+RUN git clone $GIT_PROJECT /var/www/html/php-example
 
 # svn��F�؋L������悤�ݒ�
 RUN mkdir ~/.subversion

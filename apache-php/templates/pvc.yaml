@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: apache-pvc
+  name: apache-php-pvc
 spec:
   storageClassName: local-storage
   accessModes: ReadWriteOnce
