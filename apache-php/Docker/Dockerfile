@@ -4,14 +4,14 @@ ENV GIT_PROJECT https://github.com/take-t14/php-example.git
 
 ##################
 # apache
-COPY ./apache/apache-install.sh ~/apache-install.sh
-RUN ~/apache-install.sh
+COPY ./apache/apache-install.sh /root/apache-install.sh
+RUN /root/apache-install.sh
 # Copy apache vhost file to proxy php requests to php-fpm container
 COPY ./apache/Includes /opt/rh/httpd24/root/etc/httpd/Includes
 # SSL通信する際はここを有効にする
 # COPY ./ssl /etc/httpd/ssl
-COPY ./apache/apache-build.sh ~/apache-build.sh
-RUN ~/apache-build.sh
+COPY ./apache/apache-build.sh /root/apache-build.sh
+RUN /root/apache-build.sh
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/rh/httpd24/root/usr/lib64
 ENV PATH $PATH:/opt/rh/httpd24/root/usr/sbin
 EXPOSE 80
@@ -19,26 +19,26 @@ EXPOSE 80
 ##################
 # PHP7
 ENV PATH $PATH:/opt/remi/php72/root/usr/sbin:/opt/remi/php72/root/usr/bin:/usr/local/bin
-COPY ./php/php7/php7-install.sh ~/php7-install.sh
-RUN ~/php7-install.sh
+COPY ./php/php7/php7-install.sh /root/php7-install.sh
+RUN /root/php7-install.sh
 ADD ./php/php7/php.ini /etc/opt/remi/php72/php.ini
 ADD ./php/php7/php-fpm.conf /etc/opt/remi/php72/php-fpm.conf
 ADD ./php/php7/php-fpm.d/ /etc/opt/remi/php72/php-fpm.d
 ADD ./php/php7/dns-regist.sh /usr/local/bin/
-COPY ./php/php7/php7-build.sh ~/php7-build.sh
-RUN ~/php7-build.sh
+COPY ./php/php7/php7-build.sh /root/php7-build.sh
+RUN /root/php7-build.sh
 
 ##################
 # PHP5
 ENV PATH $PATH:/opt/remi/php56/root/usr/sbin:/opt/remi/php56/root/usr/bin:/usr/local/bin
-COPY ./php/php5/php5-install.sh ~/php5-install.sh
-RUN ~/php5-install.sh
+COPY ./php/php5/php5-install.sh /root/php5-install.sh
+RUN /root/php5-install.sh
 ADD ./php/php5/php.ini /etc/opt/remi/php56/php.ini
 ADD ./php/php5/php-fpm.conf /etc/opt/remi/php56/php-fpm.conf
 ADD ./php/php5/php-fpm.d/ /etc/opt/remi/php56/php-fpm.d
 ADD ./php/php5/dns-regist.sh /usr/local/bin/
-COPY ./php/php5/php5-build.sh ~/php5-build.sh
-RUN ~/php5-build.sh
+COPY ./php/php5/php5-build.sh /root/php5-build.sh
+RUN /root/php5-build.sh
 
 ##################
 # supervisor
@@ -54,7 +54,7 @@ COPY ./supervisord/supervisord.conf /etc/supervisord.conf
 # その他設定
 
 # git, subversion
-RUN yum -y update && yum -y subversion git && yum clean all
+RUN yum -y update && yum install -y subversion git && yum clean all
 RUN mkdir -p /var/www/html/php-example
 RUN git clone $GIT_PROJECT /var/www/html/php-example
 
