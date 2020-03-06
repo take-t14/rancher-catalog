@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: apache
 spec:
@@ -28,10 +28,10 @@ spec:
         - sh
         - "-c"
         - |
-          ln -s /mnt/src/example1.co.jp /home/example1.co.jp && \
-          ln -s /mnt/src/example2.co.jp /home/example2.co.jp && \
-          ln -s /mnt/src/laravel-project /home/laravel-project && \
-          ln -s /mnt/src/nuxtapp /home/nuxtapp && \
+          ln -s /var/www/example1.co.jp /home/example1.co.jp && \
+          ln -s /var/www/example2.co.jp /home/example2.co.jp && \
+          ln -s /var/www/laravel-project /home/laravel-project && \
+          ln -s /var/www/nuxtapp /home/nuxtapp && \
           apachectl -D FOREGROUND
         ports:
         - name: http
@@ -40,10 +40,10 @@ spec:
           containerPort: 443
         volumeMounts:
         - name: disk
-          mountPath: "/mnt/src"
+          mountPath: "/var/www"
         securityContext:
           privileged: true
       volumes:
       - name: disk
         persistentVolumeClaim:
-          claimName: php-src-sample-pvc
+          claimName: apache-pvc
