@@ -8,6 +8,6 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: hostpath
+  storageClassName: manual
   hostPath:
     path: /var/log/nuxt
