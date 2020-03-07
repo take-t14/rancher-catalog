@@ -64,12 +64,12 @@ RUN ln -s /var/www/html/php-example/laravel-project /home/laravel-project
 RUN ln -s /var/www/html/php-example/example1.co.jp /home/example1.co.jp
 RUN ln -s /var/www/html/php-example/example2.co.jp /home/example2.co.jp
 RUN ln -s /var/www/html/php-example/nuxtapp /home/nuxtapp
-RUN chown -R www-data:www-data /home/laravel-project
-RUN chown -R www-data:www-data /home/example1.co.jp
-RUN chown -R www-data:www-data /home/example2.co.jp
-RUN chmod -R 755 /home/laravel-project
-RUN chmod -R 755 /home/example1.co.jp
-RUN chmod -R 755 /home/example2.co.jp
+RUN chown -R www-data:www-data /var/www/html/php-example/laravel-project
+RUN chown -R www-data:www-data /var/www/html/php-example/example1.co.jp
+RUN chown -R www-data:www-data /var/www/html/php-example/example2.co.jp
+RUN chmod -R 755 /var/www/html/php-example/laravel-project
+RUN chmod -R 755 /var/www/html/php-example/example1.co.jp
+RUN chmod -R 755 /var/www/html/php-example/example2.co.jp
 
 # svn��F�؋L������悤�ݒ�
 RUN mkdir ~/.subversion
