@@ -31,14 +31,14 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: apache-sv
+          serviceName: apache-php-sv
           servicePort: 80
   - host: k8s-example1.co.jp
     http:
       paths:
       - path: /
         backend:
-          serviceName: apache-sv
+          serviceName: apache-php-sv
           servicePort: 80
 # HTTPSの場合は443を指定する
 #          servicePort: 443
@@ -47,7 +47,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: apache-sv
+          serviceName: apache-php-sv
           servicePort: 80
 # HTTPSの場合は443を指定する
 #          servicePort: 443
