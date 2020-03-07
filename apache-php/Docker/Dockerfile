@@ -1,6 +1,5 @@
 FROM centos:centos7.2.1511
 
-RUN echo "192.168.57.120 gitlab.example.com" >> /etc/hosts
 ENV GIT_PROJECT gitlab.example.com/hatake_t14/php.git
 ENV GIT_USER hatake_t14
 ENV GIT_PASS ffffffff
@@ -61,7 +60,6 @@ RUN yum -y update && yum install -y subversion git | true && yum clean all
 RUN mkdir -p /var/www/html/php-example
 RUN git config --global http.sslVerify false
 RUN git clone https://${GIT_USER}:${GIT_PASS}@${GIT_PROJECT} /var/www/html/php-example
-RUN git clone ${GIT_PROJECT} /var/www/html/php-example
 RUN ln -s /var/www/html/php-example/laravel-project /home/laravel-project
 RUN ln -s /var/www/html/php-example/example1.co.jp /home/example1.co.jp
 RUN ln -s /var/www/html/php-example/example2.co.jp /home/example2.co.jp
