@@ -30,6 +30,7 @@ spec:
         - "-c"
         - |
           cd /home/nuxtapp && \
+          pwd && \
           npm install && \
           npm run build && \
           npm run start >> /var/log/nuxt.log 2>&1
