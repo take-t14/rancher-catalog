@@ -23,8 +23,7 @@ RUN mkdir -p /var/www/html/nuxtapp
 RUN git config --global http.sslVerify false
 RUN git clone https://${GIT_USER}:${GIT_PASS}@${GIT_PROJECT} /var/www/html/php
 RUN ln -s /var/www/html/php/laravel-project/nuxtapp /home/nuxtapp
-RUN cd /home/nuxtapp
-RUN npm install
+RUN cd /home/nuxtapp && npm install
 
 EXPOSE 80
 CMD ["npm", "run", "dev"]
