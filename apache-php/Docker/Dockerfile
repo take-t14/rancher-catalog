@@ -1,6 +1,6 @@
 FROM centos:centos7.2.1511
 
-ENV GIT_PROJECT https://github.com/take-t14/php-example.git
+ENV GIT_PROJECT https://gitlab.example.com/hatake_t14/php.git
 
 ##################
 # apache
@@ -57,6 +57,10 @@ COPY ./supervisord/supervisord.conf /etc/supervisord.conf
 RUN yum -y update && yum install -y subversion git | true && yum clean all
 RUN mkdir -p /var/www/html/php-example
 RUN git clone $GIT_PROJECT /var/www/html/php-example
+RUN ln -s /var/www/html/php-example/laravel-project /home/laravel-project
+RUN ln -s /var/www/html/php-example/example1.co.jp /home/example1.co.jp
+RUN ln -s /var/www/html/php-example/example2.co.jp /home/example2.co.jp
+RUN ln -s /var/www/html/php-example/nuxtapp /home/nuxtapp
 
 # svn��F�؋L������悤�ݒ�
 RUN mkdir ~/.subversion
