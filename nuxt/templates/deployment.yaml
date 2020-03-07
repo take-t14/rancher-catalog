@@ -15,8 +15,6 @@ spec:
       containers:
       - name: nuxt
         image: registry.example.com/hatake_t14/php/nuxt:latest
-      imagePullSecrets:
-      - name: secret-registry
         env:
         - name: NODE_ENV
           value: "production"
@@ -25,7 +23,7 @@ spec:
         volumeMounts:
         - name: disk
           mountPath: "/home/nuxtapp/log"
-      command:
+        command:
         - sh
         - "-c"
         - |
@@ -34,6 +32,8 @@ spec:
           npm run build && \
           npm run start >> /var/log/nuxt.log 2>&1
 #          echo "10.7.252.3 laravel-project.hatake.test" >> /etc/hosts
+      imagePullSecrets:
+      - name: secret-registry
       volumes:
       - name: disk
         persistentVolumeClaim:
