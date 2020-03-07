@@ -29,11 +29,11 @@ spec:
         - sh
         - "-c"
         - |
-          cd /home/nuxtapp && \
-          npm install && \
-          npm run build && \
-          npm run start >> /var/log/nuxt.log 2>&1 && \
           tail -f /dev/null
+#          cd /home/nuxtapp && \
+#          npm install && \
+#          npm run build && \
+#          npm run start >> /var/log/nuxt.log 2>&1
 #          echo "10.7.252.3 laravel-project.hatake.test" >> /etc/hosts
       volumes:
       - name: disk
