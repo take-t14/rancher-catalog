@@ -29,8 +29,7 @@ spec:
         - sh
         - "-c"
         - |
-          ln -s /var/www/html/php-example/laravel-project /home/laravel-project && \
-          cd /home/laravel-project/nuxtapp/ && \
+          cd /home/nuxtapp && \
           npm run build && \
           npm run start >> /var/log/nuxt.log 2>&1
 #          echo "10.7.252.3 laravel-project.hatake.test" >> /etc/hosts
