@@ -15,6 +15,8 @@ spec:
       containers:
       - name: apache-php
         image: registry.example.com/hatake_t14/php/apache-php:latest
+      imagePullSecrets:
+      - name: secret-registry
 #        env:
 #        - name: LC_CTYPE
 #          value: ja_JP.utf8
