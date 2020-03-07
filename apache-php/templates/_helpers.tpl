@@ -78,45 +78,6 @@ Also, we can't use a single if because lazy evaluation is not an option
 {{- end -}}
 
 {{/*
-Return apache-php postgres user password
-*/}}
-{{- define "apache-php.postgres.password" -}}
-{{- if .Values.global.apache-php.apache-phpPostgresPassword }}
-    {{- .Values.global.apache-php.apache-phpPostgresPassword -}}
-{{- else if .Values.apache-phpPostgresPassword -}}
-    {{- .Values.apache-phpPostgresPassword -}}
-{{- else -}}
-    {{- randAlphaNum 10 -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
-Return apache-php password
-*/}}
-{{- define "apache-php.password" -}}
-{{- if .Values.global.apache-php.apache-phpPassword }}
-    {{- .Values.global.apache-php.apache-phpPassword -}}
-{{- else if .Values.apache-phpPassword -}}
-    {{- .Values.apache-phpPassword -}}
-{{- else -}}
-    {{- randAlphaNum 10 -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
-Return apache-php replication password
-*/}}
-{{- define "apache-php.replication.password" -}}
-{{- if .Values.global.apache-php.replicationPassword }}
-    {{- .Values.global.apache-php.replicationPassword -}}
-{{- else if .Values.replication.password -}}
-    {{- .Values.replication.password -}}
-{{- else -}}
-    {{- randAlphaNum 10 -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
 Return apache-php username
 */}}
 {{- define "apache-php.username" -}}
