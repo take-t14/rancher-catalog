@@ -13,7 +13,7 @@ global:
 ## ref: https://hub.docker.com/r/bitnami/postgresql/tags/
 ##
 image:
-  registry: gitlab.example.com
+  registry: registry.example.com
   repository: hatake_t14/php/apache-php
   tag: latest
   ## Specify a imagePullPolicy
