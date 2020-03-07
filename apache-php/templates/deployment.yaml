@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: apache-php
-        image: {{ template "apachePhp.volumePermissions.image" . }}
+        image: {{ template "apachePhp.image" . }}
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
       imagePullSecrets:
       - name: secret-registry
