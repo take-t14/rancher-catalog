@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nuxt
-        image: registry.example.com/hatake_t14/php/apache-php:latest
+        image: registry.example.com/hatake_t14/php/nuxt:latest
         env:
         - name: NODE_ENV
           value: "production"
