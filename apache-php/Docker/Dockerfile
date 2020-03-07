@@ -42,7 +42,7 @@ RUN /root/php5-build.sh
 
 ##################
 # supervisor
-RUN yum install -y python-setuptools && \
+RUN yum install -y python-setuptools | true && \
   easy_install supervisor
 RUN mkdir -p /var/lib/supervisor
 RUN mkdir -p /var/log/supervisord
@@ -54,7 +54,7 @@ COPY ./supervisord/supervisord.conf /etc/supervisord.conf
 # その他設定
 
 # git, subversion
-RUN yum -y update && yum install -y subversion git && yum clean all
+RUN yum -y update && yum install -y subversion git | true && yum clean all
 RUN mkdir -p /var/www/html/php-example
 RUN git clone $GIT_PROJECT /var/www/html/php-example
 

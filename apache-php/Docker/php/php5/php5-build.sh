@@ -1,24 +1,6 @@
 #!/bin/bash
 
-# node.js
-curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-yum install -y nodejs \
-  yum clean all
-rm -rf /var/lib/apt/lists/*
-echo "hostname=ana.d-a.co.jp" > /etc/ssmtp/ssmtp.conf
-echo "root=root@ana.d-a.co.jp" >> /etc/ssmtp/ssmtp.conf
-echo "mailhub=postfix-sv" >> /etc/ssmtp/ssmtp.conf
-echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
-echo "localhost localhost.localdomain" >> /etc/hosts
-
-chmod 700 /usr/local/bin/dns-regist.sh
-chown root:root /usr/local/bin/dns-regist.sh
-
 sed -i "s/;date.timezone =/date.timezone = Asia\/Tokyo/" /etc/opt/remi/php56/php.ini
-
-mkdir -p /var/www/html
-useradd www-data
-echo 'www-data:www-data' |chpasswd
 
 mv /etc/opt/remi/php56/php.d/20-bcmath.ini /etc/opt/remi/php56/php.d/20-bcmath.ini_back
 mv /etc/opt/remi/php56/php.d/20-bz2.ini /etc/opt/remi/php56/php.d/20-bz2.ini_back

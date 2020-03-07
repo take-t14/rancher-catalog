@@ -68,7 +68,7 @@ mv /etc/opt/remi/php72/php.d/50-mysql.ini /etc/opt/remi/php72/php.d/50-mysql.ini
 cd /tmp/
 curl -s https://getcomposer.org/installer | /opt/remi/php72/root/usr/bin/php
 mv -i composer.phar /usr/local/bin/composer
-cat echo "alias composer='/opt/remi/php72/root/usr/bin/php /usr/local/bin/composer'" > ~/.bash_profile
+echo "alias composer='/opt/remi/php72/root/usr/bin/php /usr/local/bin/composer'" >> /etc/bashrc
 
 chown root:www-data /opt/remi/php72/root/usr/sbin/php-fpm && \
   chmod 775 /opt/remi/php72/root/usr/sbin/php-fpm && \
