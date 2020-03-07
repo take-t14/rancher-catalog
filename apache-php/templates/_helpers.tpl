@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "apache-php.name" -}}
+{{- define "apachePhp.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -10,7 +10,7 @@ Expand the name of the chart.
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
-{{- define "apache-php.fullname" -}}
+{{- define "apachePhp.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -26,7 +26,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
-{{- define "apache-php.master.fullname" -}}
+{{- define "apachePhp.master.fullname" -}}
 {{- $name := default .Chart.Name .Values.nameOverride -}}
 {{- $fullname := default (printf "%s-%s" .Release.Name $name) .Values.fullnameOverride -}}
 {{- if .Values.replication.enabled -}}
@@ -39,7 +39,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{/*
 Return the appropriate apiVersion for networkpolicy.
 */}}
-{{- define "apache-php.networkPolicy.apiVersion" -}}
+{{- define "apachePhp.networkPolicy.apiVersion" -}}
 {{- if semverCompare ">=1.4-0, <1.7-0" .Capabilities.KubeVersion.GitVersion -}}
 "extensions/v1beta1"
 {{- else if semverCompare "^1.7-0" .Capabilities.KubeVersion.GitVersion -}}
@@ -50,14 +50,14 @@ Return the appropriate apiVersion for networkpolicy.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "apache-php.chart" -}}
+{{- define "apachePhp.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
-Return the proper apache-php image name
+Return the proper apachePhp image name
 */}}
-{{- define "apache-php.image" -}}
+{{- define "apachePhp.image" -}}
 {{- $registryName := .Values.image.registry -}}
 {{- $repositoryName := .Values.image.repository -}}
 {{- $tag := .Values.image.tag | toString -}}
@@ -78,21 +78,21 @@ Also, we can't use a single if because lazy evaluation is not an option
 {{- end -}}
 
 {{/*
-Return apache-php username
+Return apachePhp username
 */}}
-{{- define "apache-php.username" -}}
-{{- if .Values.global.apachePhp.apache-phpUsername }}
-    {{- .Values.global.apachePhp.apache-phpUsername -}}
+{{- define "apachePhp.username" -}}
+{{- if .Values.global.apachePhp.apachePhpUsername }}
+    {{- .Values.global.apachePhp.apachePhpUsername -}}
 {{- else -}}
-    {{- .Values.apache-phpUsername -}}
+    {{- .Values.apachePhpUsername -}}
 {{- end -}}
 {{- end -}}
 
 
 {{/*
-Return apache-php replication username
+Return apachePhp replication username
 */}}
-{{- define "apache-php.replication.username" -}}
+{{- define "apachePhp.replication.username" -}}
 {{- if .Values.global.apachePhp.replicationUser }}
     {{- .Values.global.apachePhp.replicationUser -}}
 {{- else -}}
@@ -101,9 +101,9 @@ Return apache-php replication username
 {{- end -}}
 
 {{/*
-Return apache-php port
+Return apachePhp port
 */}}
-{{- define "apache-php.port" -}}
+{{- define "apachePhp.port" -}}
 {{- if .Values.global.apachePhp.servicePort }}
     {{- .Values.global.apachePhp.servicePort -}}
 {{- else -}}
@@ -112,20 +112,20 @@ Return apache-php port
 {{- end -}}
 
 {{/*
-Return apache-php created database
+Return apachePhp created database
 */}}
-{{- define "apache-php.database" -}}
-{{- if .Values.global.apachePhp.apache-phpDatabase }}
-    {{- .Values.global.apachePhp.apache-phpDatabase -}}
-{{- else if .Values.apache-phpDatabase -}}
-    {{- .Values.apache-phpDatabase -}}
+{{- define "apachePhp.database" -}}
+{{- if .Values.global.apachePhp.apachePhpDatabase }}
+    {{- .Values.global.apachePhp.apachePhpDatabase -}}
+{{- else if .Values.apachePhpDatabase -}}
+    {{- .Values.apachePhpDatabase -}}
 {{- end -}}
 {{- end -}}
 
 {{/*
 Return the proper image name to change the volume permissions
 */}}
-{{- define "apache-php.volumePermissions.image" -}}
+{{- define "apachePhp.volumePermissions.image" -}}
 {{- $registryName := .Values.volumePermissions.image.registry -}}
 {{- $repositoryName := .Values.volumePermissions.image.repository -}}
 {{- $tag := .Values.volumePermissions.image.tag | toString -}}
@@ -146,9 +146,9 @@ Also, we can't use a single if because lazy evaluation is not an option
 {{- end -}}
 
 {{/*
-Return the proper apache-php metrics image name
+Return the proper apachePhp metrics image name
 */}}
-{{- define "apache-php.metrics.image" -}}
+{{- define "apachePhp.metrics.image" -}}
 {{- $registryName :=  default "docker.io" .Values.metrics.image.registry -}}
 {{- $repositoryName := .Values.metrics.image.repository -}}
 {{- $tag := default "latest" .Values.metrics.image.tag | toString -}}
@@ -171,20 +171,20 @@ Also, we can't use a single if because lazy evaluation is not an option
 {{/*
 Get the password secret.
 */}}
-{{- define "apache-php.secretName" -}}
+{{- define "apachePhp.secretName" -}}
 {{- if .Values.global.apachePhp.existingSecret }}
     {{- printf "%s" .Values.global.apachePhp.existingSecret -}}
 {{- else if .Values.existingSecret -}}
     {{- printf "%s" .Values.existingSecret -}}
 {{- else -}}
-    {{- printf "%s" (include "apache-php.fullname" .) -}}
+    {{- printf "%s" (include "apachePhp.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
 {{/*
 Return true if a secret object should be created
 */}}
-{{- define "apache-php.createSecret" -}}
+{{- define "apachePhp.createSecret" -}}
 {{- if .Values.global.apachePhp.existingSecret }}
 {{- else if .Values.existingSecret -}}
 {{- else -}}
@@ -195,54 +195,54 @@ Return true if a secret object should be created
 {{/*
 Get the configuration ConfigMap name.
 */}}
-{{- define "apache-php.configurationCM" -}}
+{{- define "apachePhp.configurationCM" -}}
 {{- if .Values.configurationConfigMap -}}
 {{- printf "%s" (tpl .Values.configurationConfigMap $) -}}
 {{- else -}}
-{{- printf "%s-configuration" (include "apache-php.fullname" .) -}}
+{{- printf "%s-configuration" (include "apachePhp.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
 {{/*
 Get the extended configuration ConfigMap name.
 */}}
-{{- define "apache-php.extendedConfigurationCM" -}}
+{{- define "apachePhp.extendedConfigurationCM" -}}
 {{- if .Values.extendedConfConfigMap -}}
 {{- printf "%s" (tpl .Values.extendedConfConfigMap $) -}}
 {{- else -}}
-{{- printf "%s-extended-configuration" (include "apache-php.fullname" .) -}}
+{{- printf "%s-extended-configuration" (include "apachePhp.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
 {{/*
 Get the initialization scripts ConfigMap name.
 */}}
-{{- define "apache-php.initdbScriptsCM" -}}
+{{- define "apachePhp.initdbScriptsCM" -}}
 {{- if .Values.initdbScriptsConfigMap -}}
 {{- printf "%s" (tpl .Values.initdbScriptsConfigMap $) -}}
 {{- else -}}
-{{- printf "%s-init-scripts" (include "apache-php.fullname" .) -}}
+{{- printf "%s-init-scripts" (include "apachePhp.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
 {{/*
 Get the initialization scripts Secret name.
 */}}
-{{- define "apache-php.initdbScriptsSecret" -}}
+{{- define "apachePhp.initdbScriptsSecret" -}}
 {{- printf "%s" (tpl .Values.initdbScriptsSecret $) -}}
 {{- end -}}
 
 {{/*
 Get the metrics ConfigMap name.
 */}}
-{{- define "apache-php.metricsCM" -}}
-{{- printf "%s-metrics" (include "apache-php.fullname" .) -}}
+{{- define "apachePhp.metricsCM" -}}
+{{- printf "%s-metrics" (include "apachePhp.fullname" .) -}}
 {{- end -}}
 
 {{/*
 Return the proper Docker Image Registry Secret Names
 */}}
-{{- define "apache-php.imagePullSecrets" -}}
+{{- define "apachePhp.imagePullSecrets" -}}
 {{/*
 Helm 2.11 supports the assignment of a value to a variable defined in a different scope,
 but Helm 2.9 and 2.10 does not support it, so we need to implement this if-else logic.
@@ -283,22 +283,22 @@ imagePullSecrets:
 {{/*
 Get the readiness probe command
 */}}
-{{- define "apache-php.readinessProbeCommand" -}}
+{{- define "apachePhp.readinessProbeCommand" -}}
 - |
-{{- if (include "apache-php.database" .) }}
-  exec pg_isready -U {{ include "apache-php.username" . | quote }} -d {{ (include "apache-php.database" .) | quote }} -h 127.0.0.1 -p {{ template "apache-php.port" . }}
+{{- if (include "apachePhp.database" .) }}
+  exec pg_isready -U {{ include "apachePhp.username" . | quote }} -d {{ (include "apachePhp.database" .) | quote }} -h 127.0.0.1 -p {{ template "apachePhp.port" . }}
 {{- else }}
-  exec pg_isready -U {{ include "apache-php.username" . | quote }} -h 127.0.0.1 -p {{ template "apache-php.port" . }}
+  exec pg_isready -U {{ include "apachePhp.username" . | quote }} -h 127.0.0.1 -p {{ template "apachePhp.port" . }}
 {{- end }}
 {{- if contains "bitnami/" .Values.image.repository }}
-  [ -f /opt/bitnami/apache-php/tmp/.initialized ] || [ -f /bitnami/apache-php/.initialized ]
+  [ -f /opt/bitnami/apachePhp/tmp/.initialized ] || [ -f /bitnami/apachePhp/.initialized ]
 {{- end -}}
 {{- end -}}
 
 {{/*
 Return  the proper Storage Class
 */}}
-{{- define "apache-php.storageClass" -}}
+{{- define "apachePhp.storageClass" -}}
 {{/*
 Helm 2.11 supports the assignment of a value to a variable defined in a different scope,
 but Helm 2.9 and 2.10 does not support it, so we need to implement this if-else logic.
@@ -333,9 +333,9 @@ but Helm 2.9 and 2.10 does not support it, so we need to implement this if-else 
 {{/*
 Renders a value that contains template.
 Usage:
-{{ include "apache-php.tplValue" ( dict "value" .Values.path.to.the.Value "context" $) }}
+{{ include "apachePhp.tplValue" ( dict "value" .Values.path.to.the.Value "context" $) }}
 */}}
-{{- define "apache-php.tplValue" -}}
+{{- define "apachePhp.tplValue" -}}
     {{- if typeIs "string" .value }}
         {{- tpl .value .context }}
     {{- else }}
@@ -346,7 +346,7 @@ Usage:
 {{/*
 Return the appropriate apiVersion for statefulset.
 */}}
-{{- define "apache-php.statefulset.apiVersion" -}}
+{{- define "apachePhp.statefulset.apiVersion" -}}
 {{- if semverCompare "<1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 {{- print "apps/v1beta2" -}}
 {{- else -}}
@@ -357,9 +357,9 @@ Return the appropriate apiVersion for statefulset.
 {{/*
 Compile all warnings into a single message, and call fail.
 */}}
-{{- define "apache-php.validateValues" -}}
+{{- define "apachePhp.validateValues" -}}
 {{- $messages := list -}}
-{{- $messages := append $messages (include "apache-php.validateValues.ldapConfigurationMethod" .) -}}
+{{- $messages := append $messages (include "apachePhp.validateValues.ldapConfigurationMethod" .) -}}
 {{- $messages := without $messages "" -}}
 {{- $message := join "\n" $messages -}}
 
@@ -369,13 +369,13 @@ Compile all warnings into a single message, and call fail.
 {{- end -}}
 
 {{/*
-Validate values of apache-php - If ldap.url is used then you don't need the other settings for ldap
+Validate values of apachePhp - If ldap.url is used then you don't need the other settings for ldap
 */}}
-{{- define "apache-php.validateValues.ldapConfigurationMethod" -}}
+{{- define "apachePhp.validateValues.ldapConfigurationMethod" -}}
 {{- if and .Values.ldap.enabled (and (not (empty .Values.ldap.url)) (not (empty .Values.ldap.server))) }}
-apache-php: ldap.url, ldap.server
+apachePhp: ldap.url, ldap.server
     You cannot set both `ldap.url` and `ldap.server` at the same time.
     Please provide a unique way to configure LDAP.
-    More info at https://www.apache-php.org/docs/current/auth-ldap.html
+    More info at https://www.apachePhp.org/docs/current/auth-ldap.html
 {{- end -}}
 {{- end -}}
