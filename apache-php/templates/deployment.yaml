@@ -16,30 +16,10 @@ spec:
       - name: apache-php
         image: {{ template "apachePhp.image" . }}
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
-      imagePullSecrets:
-      - name: secret-registry
 #        env:
 #        - name: LC_CTYPE
 #          value: ja_JP.utf8
-        livenessProbe:
-          httpGet:
-            path: /healthcheck
-            port: 10080
-          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
-          successThreshold: {{ .Values.livenessProbe.successThreshold }}
-          failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
-        readinessProbe:
-          httpGet:
-            path: /healthcheck
-            port: 10080
-          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-          timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-          successThreshold: {{ .Values.readinessProbe.successThreshold }}
-          failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
-      command:
+        command:
         - sh
         - "-c"
         - |
@@ -58,6 +38,26 @@ spec:
           mountPath: "/home/nuxtapp/log"
         securityContext:
           privileged: true
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 10080
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.livenessProbe.successThreshold }}
+          failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 10080
+          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.readinessProbe.successThreshold }}
+          failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+      imagePullSecrets:
+      - name: secret-registry
       volumes:
       - name: disk
         persistentVolumeClaim:
