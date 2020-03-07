@@ -1,9 +1,12 @@
-piVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nuxt
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: nuxt
   template:
     metadata:
       labels:
@@ -11,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nuxt
-        image: php-gke-nuxt:latest
+        image: registry.example.com/hatake_t14/php/apache-php:latest
         env:
         - name: NODE_ENV
           value: "production"
@@ -19,14 +22,12 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: disk
-          mountPath: "/mnt/src"
+          mountPath: "/home/nuxtapp/log"
         command:
         - sh
         - "-c"
         - |
-          ln -s /mnt/src/example1.co.jp /home/example1.co.jp && \
-          ln -s /mnt/src/example2.co.jp /home/example2.co.jp && \
-          ln -s /mnt/src/laravel-project /home/laravel-project && \
+          ln -s /var/www/html/php-example/laravel-project /home/laravel-project && \
           cd /home/laravel-project/nuxtapp/ && \
           npm run build && \
           npm run start >> /var/log/nuxt.log 2>&1
@@ -34,4 +35,4 @@ spec:
       volumes:
       - name: disk
         persistentVolumeClaim:
-          claimName: php-src-sample-pvc
+          claimName: nuxt-pvc
