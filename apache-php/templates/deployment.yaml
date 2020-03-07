@@ -14,18 +14,11 @@ spec:
     spec:
       containers:
       - name: apache-php
-        image: registry.example.com/hatake_t14/php/apache-php:latest
-      imagePullSecrets:
-      - name: secret-registry
+        image: {{ template "apachePhp.image" . }}
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
 #        env:
 #        - name: LC_CTYPE
 #          value: ja_JP.utf8
-        readinessProbe:
-          httpGet:
-            path: /healthcheck
-            port: 10080
-          initialDelaySeconds: 5
-          periodSeconds: 5
         command:
         - sh
         - "-c"
@@ -45,6 +38,26 @@ spec:
           mountPath: "/home/nuxtapp/log"
         securityContext:
           privileged: true
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 10080
+          initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.livenessProbe.successThreshold }}
+          failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 10080
+          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.readinessProbe.successThreshold }}
+          failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+      imagePullSecrets:
+      - name: secret-registry
       volumes:
       - name: disk
         persistentVolumeClaim:
