@@ -30,10 +30,10 @@ spec:
         - "-c"
         - |
           cd /home/nuxtapp && \
-          pwd && \
           npm install && \
           npm run build && \
-          npm run start >> /var/log/nuxt.log 2>&1
+          npm run start >> /var/log/nuxt.log 2>&1 && \
+          tail -f /dev/null
 #          echo "10.7.252.3 laravel-project.hatake.test" >> /etc/hosts
       volumes:
       - name: disk
