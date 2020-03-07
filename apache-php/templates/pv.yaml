@@ -3,10 +3,11 @@ apiVersion: v1
 metadata:
   name: apache-php-pv
 spec:
-  storageClassName: local-storage
   capacity:
     storage: 1Gi
   accessModes:
   - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: hostpath
   hostPath:
     path: /var/log/httpd

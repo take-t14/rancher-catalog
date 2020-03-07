@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: apache-php-pvc
 spec:
-  storageClassName: local-storage
-  accessModes: ReadWriteOnce
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: hostpath
   resources:
     requests:
       storage: 1Gi
