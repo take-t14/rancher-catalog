@@ -1,7 +1,7 @@
 FROM centos:centos7.2.1511
 
 RUN echo "192.168.57.120 gitlab.example.com" >> /etc/hosts
-ENV GIT_PROJECT https://gitlab.example.com/hatake_t14/php.git
+ENV GIT_PROJECT gitlab.example.com/hatake_t14/php.git
 ENV GIT_USER hatake_t14
 ENV GIT_PASS ffffffff
 
