@@ -81,8 +81,8 @@ Also, we can't use a single if because lazy evaluation is not an option
 Return apache-php username
 */}}
 {{- define "apache-php.username" -}}
-{{- if .Values.global.apache-php.apache-phpUsername }}
-    {{- .Values.global.apache-php.apache-phpUsername -}}
+{{- if .Values.global.apachePhp.apache-phpUsername }}
+    {{- .Values.global.apachePhp.apache-phpUsername -}}
 {{- else -}}
     {{- .Values.apache-phpUsername -}}
 {{- end -}}
@@ -93,8 +93,8 @@ Return apache-php username
 Return apache-php replication username
 */}}
 {{- define "apache-php.replication.username" -}}
-{{- if .Values.global.apache-php.replicationUser }}
-    {{- .Values.global.apache-php.replicationUser -}}
+{{- if .Values.global.apachePhp.replicationUser }}
+    {{- .Values.global.apachePhp.replicationUser -}}
 {{- else -}}
     {{- .Values.replication.user -}}
 {{- end -}}
@@ -104,8 +104,8 @@ Return apache-php replication username
 Return apache-php port
 */}}
 {{- define "apache-php.port" -}}
-{{- if .Values.global.apache-php.servicePort }}
-    {{- .Values.global.apache-php.servicePort -}}
+{{- if .Values.global.apachePhp.servicePort }}
+    {{- .Values.global.apachePhp.servicePort -}}
 {{- else -}}
     {{- .Values.service.port -}}
 {{- end -}}
@@ -115,8 +115,8 @@ Return apache-php port
 Return apache-php created database
 */}}
 {{- define "apache-php.database" -}}
-{{- if .Values.global.apache-php.apache-phpDatabase }}
-    {{- .Values.global.apache-php.apache-phpDatabase -}}
+{{- if .Values.global.apachePhp.apache-phpDatabase }}
+    {{- .Values.global.apachePhp.apache-phpDatabase -}}
 {{- else if .Values.apache-phpDatabase -}}
     {{- .Values.apache-phpDatabase -}}
 {{- end -}}
@@ -172,8 +172,8 @@ Also, we can't use a single if because lazy evaluation is not an option
 Get the password secret.
 */}}
 {{- define "apache-php.secretName" -}}
-{{- if .Values.global.apache-php.existingSecret }}
-    {{- printf "%s" .Values.global.apache-php.existingSecret -}}
+{{- if .Values.global.apachePhp.existingSecret }}
+    {{- printf "%s" .Values.global.apachePhp.existingSecret -}}
 {{- else if .Values.existingSecret -}}
     {{- printf "%s" .Values.existingSecret -}}
 {{- else -}}
@@ -185,7 +185,7 @@ Get the password secret.
 Return true if a secret object should be created
 */}}
 {{- define "apache-php.createSecret" -}}
-{{- if .Values.global.apache-php.existingSecret }}
+{{- if .Values.global.apachePhp.existingSecret }}
 {{- else if .Values.existingSecret -}}
 {{- else -}}
     {{- true -}}
