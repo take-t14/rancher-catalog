@@ -10,4 +10,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: hostpath
   hostPath:
-    path: /opt/log/nuxt
+    path: /var/log/nuxt

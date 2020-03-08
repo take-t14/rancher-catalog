@@ -10,4 +10,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: hostpath
   hostPath:
-    path: /opt/log/httpd
+    path: /var/log/httpd
