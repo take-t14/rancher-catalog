@@ -10,7 +10,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   local:
-    path: /opt/opt
+    path: /opt
   persistentVolumeReclaimPolicy: Retain
   nodeAffinity:
     required:
