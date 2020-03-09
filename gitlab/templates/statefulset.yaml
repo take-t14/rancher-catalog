@@ -71,6 +71,7 @@ spec:
           ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
           ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
           apt-get update && \
+          apt-get install -y locales locales-all && \
           apt-get -y install task-japanese locales-all && \
           /assets/wrapper
 #          openssl req -newkey rsa:4096 -nodes -sha256 -keyout /etc/gitlab/ssl/registry.example.com.key -x509 -days 3650 \
