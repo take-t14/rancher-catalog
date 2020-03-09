@@ -66,6 +66,8 @@ spec:
           sed -i "s@\# nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/\#{node\['fqdn'\]}\.key\"@nginx\['ssl_certificate_key'\] = \"/etc/gitlab/ssl/registry\.example\.com\.key\"@" /opt/gitlab/etc/gitlab.rb.template && \
           sed -i "s/\# gitlab_rails\['registry_enabled'\] = true/gitlab_rails\['registry_enabled'\] = true/" /opt/gitlab/etc/gitlab.rb.template && \
           mkdir -p /etc/gitlab/ssl && \
+          rm -rf /etc/gitlab/ssl/registry.example.com.crt && \
+          rm -rf /etc/gitlab/ssl/registry.example.com.key && \
           ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
           ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
           apt-get update && \
