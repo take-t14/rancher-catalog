@@ -30,17 +30,3 @@ questions:
     description: "Busybox image tag"
     type: string
     label: Busybox Image Tag
-- variable: gitlabUrl
-  default: "https://gitlab.example.com/"
-  description: "GitLab URL"
-  type: string
-  required: true
-  label: GitLab URL
-  group: "GitLab Runner Settings"
-- variable: runnerToken
-  default: "https://gitlab.example.com/"
-  description: ""
-  type: string
-  required: true
-  label: GitLab Token
-  group: "GitLab Runner Settings""
