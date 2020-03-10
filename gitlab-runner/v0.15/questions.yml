@@ -4,8 +4,8 @@ categories:
 questions:
 - variable: gitlabUrl
   default: "https://gitlab.example.com/"
-  description: "Name of database to create"
+  description: "GitLab URL"
   type: string
   required: true
-  label: MySQL Database
-  group: "MySQL Settings"
+  label: GitLab URL
+  group: "GitLab Settings"
