@@ -1,6 +1,8 @@
+labels:
+  io.cattle.role: project # options are cluster/project
 categories:
-- GitLab
-- CI
+- Database
+- MySQL
 questions:
 - variable: gitlabUrl
   default: "https://gitlab.example.com/"
