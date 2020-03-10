@@ -2,31 +2,10 @@ categories:
 - GitLab
 - CI
 questions:
-- variable: defaultImage
-  default: true
-  description: "Use default Docker images"
-  label: Use Default Images
-  type: boolean
-  show_subquestion_if: false
-  group: "Container Images"
-  subquestions:
-  - variable: image
-    default: "ranchercharts/mysql"
-    description: "MySQL image name"
-    type: string
-    label: Image Name
-  - variable: imageTag
-    default: "5.7.14"
-    description: "MySQL image tag"
-    type: string
-    label: Image Tag
-  - variable: busybox.image
-    default: "ranchercharts/busybox"
-    description: "Busybox image name"
-    type: string
-    label: Image Image Name
-  - variable: busybox.tag
-    default: "1.29.3"
-    description: "Busybox image tag"
-    type: string
-    label: Busybox Image Tag
+- variable: mysqlDatabase
+  default: "admin"
+  description: "Name of database to create"
+  type: string
+  required: true
+  label: MySQL Database
+  group: "MySQL Settings"
