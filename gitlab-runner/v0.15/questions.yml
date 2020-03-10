@@ -2,8 +2,8 @@ categories:
 - GitLab
 - CI
 questions:
-- variable: mysqlDatabase
-  default: "admin"
+- variable: gitlabUrl
+  default: "https://gitlab.example.com/"
   description: "Name of database to create"
   type: string
   required: true
