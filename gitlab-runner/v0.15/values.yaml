@@ -28,7 +28,7 @@ runnerRegistrationToken: ""
 ## be retrieved from your GitLab Instance. It is token of already registered runner.
 ## ref: (we don't yet have docs for that, but we want to use existing token)
 ##
-runnerToken: ""
+# runnerToken: ""
 #
 ## Unregister all runners before termination
 ##
@@ -37,7 +37,7 @@ runnerToken: ""
 ## non-existant runners. Un-registering the runner before termination mitigates this issue.
 ## ref: https://docs.gitlab.com/runner/commands/README.html#gitlab-runner-unregister
 ##
-unregisterRunners: true
+# unregisterRunners: true
 
 ## When stopping the runner, give it time to wait for its jobs to terminate.
 ##

@@ -9,13 +9,6 @@ questions:
   required: true
   label: GitLab URL
   group: "GitLab Settings"
-- variable: runnerToken
-  default: ""
-  description: "GitLab Token"
-  type: string
-  required: true
-  label: GitLab Token
-  group: "GitLab Settings"
 - variable: runnerRegistrationToken
   default: ""
   description: "GitLab Registration Token"
