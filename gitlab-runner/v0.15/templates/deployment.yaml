@@ -78,6 +78,7 @@ spec:
           - sh
           - "-c"
           - |
+            mkdir -p ~/.gitlab-runner/certs && \
             ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt ~/.gitlab-runner/certs/gitlab.example.com.crt && \
             /bin/bash /scripts/entrypoint
         env:
