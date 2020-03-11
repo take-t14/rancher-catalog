@@ -74,7 +74,12 @@ spec:
             exec:
               command: ["/entrypoint", "unregister", "--all-runners"]
         {{- end }}
-        command: ["/bin/bash", "/scripts/entrypoint"]
+        command: 
+          - sh
+          - "-c"
+          - |
+            ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt /etc/gitlab-runner/cert/gitlab.example.com.crt && \
+            /bin/bash /scripts/entrypoint
         env:
         {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
         livenessProbe:
@@ -108,6 +113,10 @@ spec:
           readOnly: true
           mountPath: /home/gitlab-runner/.gitlab-runner/certs/
         {{- end }}
+        - name: gitlab-crt
+          mountPath: /etc/ssl/gitlab-crt
+        - name: gitlab-key
+          mountPath: /etc/ssl/gitlab-key
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -147,6 +156,18 @@ spec:
       - name: scripts
         configMap:
           name: {{ include "gitlab-runner.fullname" . }}
+      - name: gitlab-crt
+        secret:
+          secretName: secret-ssl-gitlab
+          items:
+          - key: tls.crt
+            path: gitlab.example.com.crt
+      - name: gitlab-key
+        secret:
+          secretName: secret-ssl-gitlab
+          items:
+          - key: tls.key
+            path: gitlab.example.com.key
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
