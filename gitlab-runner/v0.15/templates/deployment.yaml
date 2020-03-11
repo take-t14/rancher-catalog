@@ -79,7 +79,7 @@ spec:
           - "-c"
           - |
             /bin/bash /scripts/entrypoint
-#             ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt /etc/gitlab-runner/cert/gitlab.example.com.crt && \
+            ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt ~/.gitlab-runner/certs/gitlab.example.com.crt && \
         env:
         {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
         livenessProbe:
@@ -114,7 +114,7 @@ spec:
           mountPath: /home/gitlab-runner/.gitlab-runner/certs/
         {{- end }}
         - name: gitlab-crt
-          mountPath: /etc/ssl/certs
+          mountPath: /etc/ssl/gitlab-crt
         - name: gitlab-key
           mountPath: /etc/ssl/gitlab-key
         resources:
