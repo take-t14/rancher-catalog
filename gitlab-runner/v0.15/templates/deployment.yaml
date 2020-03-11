@@ -78,8 +78,8 @@ spec:
           - sh
           - "-c"
           - |
-            /bin/bash /scripts/entrypoint
             ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt ~/.gitlab-runner/certs/gitlab.example.com.crt && \
+            /bin/bash /scripts/entrypoint
         env:
         {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
         livenessProbe:
