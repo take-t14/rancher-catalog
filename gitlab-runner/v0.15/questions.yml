@@ -16,3 +16,10 @@ questions:
   required: true
   label: GitLab Token
   group: "GitLab Settings"
+- variable: runnerRegistrationToken
+  default: ""
+  description: "GitLab Registration Token"
+  type: string
+  required: true
+  label: GitLab Registration Token
+  group: "GitLab Settings"
