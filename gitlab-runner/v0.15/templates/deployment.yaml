@@ -114,7 +114,7 @@ spec:
           mountPath: /home/gitlab-runner/.gitlab-runner/certs/
         {{- end }}
         - name: gitlab-crt
-          mountPath: /etc/ssl/certs
+          mountPath: /etc/ssl/gitlab-crt
         - name: gitlab-key
           mountPath: /etc/ssl/gitlab-key
         resources:
