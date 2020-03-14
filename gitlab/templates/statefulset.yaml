@@ -109,13 +109,13 @@ spec:
           periodSeconds: {{ .Values.healthCheck.readiness.rPeriodSec }}
           successThreshold: {{ .Values.healthCheck.readiness.rSuccessCnt }}
           failureThreshold: {{ .Values.healthCheck.readiness.rFailCnt }}
-#        - name: gitlab-pvc-etc
-#          mountPath: /etc/gitlab
-#        - name: gitlab-pvc-log
-#          mountPath: /var/log/gitlab
-#        - name: gitlab-pvc-opt
-#          mountPath: /var/opt/gitlab
         volumeMounts:
+        - name: gitlab-pvc-etc
+          mountPath: /etc/gitlab
+        - name: gitlab-pvc-log
+          mountPath: /var/log/gitlab
+        - name: gitlab-pvc-opt
+          mountPath: /var/opt/gitlab
         - name: regist-crt
           mountPath: /etc/ssl/regist-crt
         - name: regist-key
