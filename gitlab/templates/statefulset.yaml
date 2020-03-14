@@ -111,11 +111,11 @@ spec:
           failureThreshold: {{ .Values.healthCheck.readiness.rFailCnt }}
         volumeMounts:
         - name: gitlab-pvc-etc
-          mountPath: /etc/gitlab
+          mountPath: /etc
         - name: gitlab-pvc-log
-          mountPath: /var/log/gitlab
+          mountPath: /var/log
         - name: gitlab-pvc-opt
-          mountPath: /var/opt/gitlab
+          mountPath: /var/opt
         - name: regist-crt
           mountPath: /etc/ssl/regist-crt
         - name: regist-key
