@@ -87,7 +87,7 @@ resources:
     cpu: 500m
   limits:
     memory: 2Gi
-    cpu: 1
+    cpu: 2
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
