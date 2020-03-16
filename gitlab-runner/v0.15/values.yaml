@@ -329,7 +329,7 @@ envVars:
     value: false
   - name: DOCKER_EXTRA_HOSTS
     value: 
-      - ["gitlab.example.com:192.168.57.120"]
+      - "gitlab.example.com:192.168.57.120"
 
 ## list of hosts and IPs that will be injected into the pod's hosts file
 hostAliases: 
