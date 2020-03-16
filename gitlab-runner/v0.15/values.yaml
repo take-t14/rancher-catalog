@@ -324,6 +324,12 @@ tolerations: []
 # envVars:
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
+envVars:
+  - name: tls_verify
+    value: false
+  - name: extra_hosts
+    value: 
+    - "gitlab.example.com:192.168.57.120"
 
 ## list of hosts and IPs that will be injected into the pod's hosts file
 hostAliases: 
