@@ -124,7 +124,7 @@ runners:
   ##
   ## ref: https://docs.gitlab.com/ce/ci/runners/#using-tags
   ##
-  # tags: ""
+  tags: "docker"
 
   ## Specify if jobs without tags should be run.
   ## If not specified, Runner will default to true if no tags were specified. In other case it will
