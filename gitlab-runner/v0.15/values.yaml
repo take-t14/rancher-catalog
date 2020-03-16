@@ -328,8 +328,7 @@ envVars:
   - name: KUBERNETES_TLS_VERIFY
     value: false
   - name: KUBERNETES_EXTRA_HOSTS
-    value: 
-      - "gitlab.example.com:192.168.57.120"
+    value: "gitlab.example.com:192.168.57.120"
 
 ## list of hosts and IPs that will be injected into the pod's hosts file
 hostAliases: 
