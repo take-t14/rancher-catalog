@@ -325,9 +325,9 @@ tolerations: []
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
 envVars:
-  - name: RUNNER_TLS_VERIFY
+  - name: RUNNER_KUBERNETES_TLS_VERIFY
     value: false
-  - name: RUNNER_EXTRA_HOSTS
+  - name: RUNNER_KUBERNETES_EXTRA_HOSTS
     value: 
     - "gitlab.example.com:192.168.57.120"
 
