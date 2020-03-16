@@ -124,7 +124,7 @@ runners:
   ##
   ## ref: https://docs.gitlab.com/ce/ci/runners/#using-tags
   ##
-  tags: "docker"
+  tags: "kubernetes"
 
   ## Specify if jobs without tags should be run.
   ## If not specified, Runner will default to true if no tags were specified. In other case it will
@@ -325,6 +325,8 @@ tolerations: []
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
 envVars:
+  - name: RUNNER_CLONE_SCRIPT
+    value: "echo '192.168.57.120 gitlab.example.com' >> /etc/hosts"
   - name: DOCKER_TLS_VERIFY
     value: false
   - name: DOCKER_EXTRA_HOSTS
