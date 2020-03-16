@@ -325,7 +325,7 @@ tolerations: []
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
 envVars:
-  - name: RUNNER_CLONE_SCRIPT
+  - name: RUNNER_PRE_CLONE_SCRIPT
     value: "echo '192.168.57.120 gitlab.example.com' >> /etc/hosts"
   - name: DOCKER_TLS_VERIFY
     value: false
