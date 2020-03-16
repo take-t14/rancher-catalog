@@ -76,7 +76,7 @@ checkInterval: 30
 
 ## For RBAC support:
 rbac:
-  create: false
+  create: true
   ## Define specific rbac permissions.
   # resources: ["pods", "pods/exec", "secrets"]
   # verbs: ["get", "list", "watch", "create", "patch", "delete"]
