@@ -325,9 +325,11 @@ tolerations: []
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
 envVars:
-  - name: RUNNER_KUBERNETES_TLS_VERIFY
+  - name: KUBERNETES_POLL_TIMEOUT
+    value: 540
+  - name: KUBERNETES_TLS_VERIFY
     value: false
-  - name: RUNNER_KUBERNETES_EXTRA_HOSTS
+  - name: KUBERNETES_EXTRA_HOSTS
     value: 
     - "gitlab.example.com:192.168.57.120"
 
