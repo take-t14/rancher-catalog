@@ -56,7 +56,7 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
+    {{ include "gitlab-runner.runner-env-vars" . | indent 4 }}
   configure: |
     set -e
     cp /init-secrets/* /secrets
