@@ -56,7 +56,8 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    {{ include "gitlab-runner.runner-env-vars" . | indent 4 }}
+    extra_hosts = ["gitlab.example.com:192.168.57.120"]
+    tls_verify = false
   configure: |
     set -e
     cp /init-secrets/* /secrets
