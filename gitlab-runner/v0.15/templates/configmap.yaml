@@ -56,10 +56,6 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    [[runners]]
-      [runners.kubernetes]
-        extra_hosts = ["gitlab.example.com:192.168.57.120"]
-        tls_verify = false
   configure: |
     set -e
     cp /init-secrets/* /secrets
