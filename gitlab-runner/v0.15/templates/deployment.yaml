@@ -80,6 +80,9 @@ spec:
           - |
             mkdir -p ~/.gitlab-runner/certs && \
             ln -s /etc/ssl/gitlab-crt/gitlab.example.com.crt ~/.gitlab-runner/certs/gitlab.example.com.crt && \
+            ln -s /etc/ssl/gitlab-key/gitlab.example.com.key ~/.gitlab-runner/certs/gitlab.example.com.key && \
+            ln -s /etc/ssl/regist-crt/registry.example.com.crt ~/.gitlab-runner/certs/registry.example.com.crt && \
+            ln -s /etc/ssl/regist-key/registry.example.com.key ~/.gitlab-runner/certs/registry.example.com.key && \
             /bin/bash /scripts/entrypoint
         env:
         {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
@@ -118,6 +121,10 @@ spec:
           mountPath: /etc/ssl/gitlab-crt
         - name: gitlab-key
           mountPath: /etc/ssl/gitlab-key
+        - name: regist-crt
+          mountPath: /etc/ssl/regist-crt
+        - name: regist-key
+          mountPath: /etc/ssl/regist-key
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -157,6 +164,18 @@ spec:
       - name: scripts
         configMap:
           name: {{ include "gitlab-runner.fullname" . }}
+      - name: regist-crt
+        secret:
+          secretName: secret-ssl-regist
+          items:
+          - key: tls.crt
+            path: registry.example.com.crt
+      - name: regist-key
+        secret:
+          secretName: secret-ssl-regist
+          items:
+          - key: tls.key
+            path: registry.example.com.key
       - name: gitlab-crt
         secret:
           secretName: secret-ssl-gitlab
