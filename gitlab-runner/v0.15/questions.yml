@@ -3,7 +3,7 @@ categories:
 - CI
 questions:
 - variable: gitlabUrl
-  default: "https://gitlab.example.com/"
+  default: "https://registry.example.com/"
   description: "GitLab URL"
   type: string
   required: true
