@@ -324,6 +324,9 @@ tolerations: []
 # envVars:
 #   - name: RUNNER_EXECUTOR
 #     value: kubernetes
+#tls-ca-file="~/.gitlab-runner/certs/registry.example.com.crt"
+#tls-cert-file="~/.gitlab-runner/certs/registry.example.com.crt"
+#tls-key-file="~/.gitlab-runner/certs/registry.example.com.key"
 envVars:
   - name: RUNNER_PRE_CLONE_SCRIPT
     value: "echo '192.168.57.120 gitlab.example.com registry.example.com' >> /etc/hosts; mkdir -p /etc/docker; echo '{\"insecure-registries\":[\"registry.example.com\",\"registry.example.com:443\",\"registry.example.com:4567\"]}' > /etc/docker/daemon.json;"
@@ -332,6 +335,12 @@ envVars:
   - name: KUBERNETES_CA_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.crt"
   - name: KUBERNETES_KEY_FILE
+    value: "~/.gitlab-runner/certs/registry.example.com.key"
+  - name: RUNNER_TLS_CERT_FILE
+    value: "~/.gitlab-runner/certs/registry.example.com.crt"
+  - name: RUNNER_TLS_CA_FILE
+    value: "~/.gitlab-runner/certs/registry.example.com.crt"
+  - name: RUNNER_TLS_KEY_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.key"
 
 ## list of hosts and IPs that will be injected into the pod's hosts file
