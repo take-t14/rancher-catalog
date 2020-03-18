@@ -56,7 +56,7 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    --tls-ca-file=~/.gitlab-runner/certs/registry.example.com.crt
+    --tls-ca-file="~/.gitlab-runner/certs/registry.example.com.crt"
   configure: |
     set -e
     cp /init-secrets/* /secrets
