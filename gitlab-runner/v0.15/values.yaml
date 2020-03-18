@@ -52,7 +52,7 @@ terminationGracePeriodSeconds: 3600
 ## this is used to populate the /home/gitlab-runner/.gitlab-runner/certs/ directory
 ## ref: https://docs.gitlab.com/runner/configuration/tls-self-signed.html#supported-options-for-self-signed-certificates
 ##
-certsSecretName: "secret-ssl-regist"
+certsSecretName: ""
 
 ## Configure the maximum number of concurrent jobs
 ## ref: https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-global-section
@@ -105,7 +105,7 @@ runners:
   ##
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  imagePullSecrets: []
+  imagePullSecrets: ["secret-ssl-gitlab", "secret-ssl-regist"]
 
   ## Specify the image pull policy: never, if-not-present, always. The cluster default will be used if not set.
   ##
