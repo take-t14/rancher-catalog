@@ -105,7 +105,7 @@ runners:
   ##
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  imagePullSecrets: ["secret-ssl-gitlab", "secret-ssl-regist"]
+  imagePullSecrets: []
 
   ## Specify the image pull policy: never, if-not-present, always. The cluster default will be used if not set.
   ##
