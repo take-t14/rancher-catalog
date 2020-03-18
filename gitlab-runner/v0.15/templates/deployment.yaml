@@ -83,10 +83,6 @@ spec:
             ln -s /etc/ssl/gitlab-key/gitlab.example.com.key ~/.gitlab-runner/certs/gitlab.example.com.key && \
             ln -s /etc/ssl/regist-crt/registry.example.com.crt ~/.gitlab-runner/certs/registry.example.com.crt && \
             ln -s /etc/ssl/regist-key/registry.example.com.key ~/.gitlab-runner/certs/registry.example.com.key && \
-            ln -s /etc/ssl/regist-key/gitlab.example.com.crt /etc/gitlab-runner/certs/gitlab.example.com.crt && \
-            ln -s /etc/ssl/regist-key/gitlab.example.com.key /etc/gitlab-runner/certs/gitlab.example.com.key && \
-            ln -s /etc/ssl/regist-key/registry.example.com.crt /etc/gitlab-runner/certs/registry.example.com.crt && \
-            ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab-runner/certs/registry.example.com.key && \
             /bin/bash /scripts/entrypoint
         env:
         {{ include "gitlab-runner.runner-env-vars" . | indent 8 }}
