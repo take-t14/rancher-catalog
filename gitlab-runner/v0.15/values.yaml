@@ -334,7 +334,7 @@ envVars:
     value: "~/.gitlab-runner/certs/registry.example.com.crt"
   - name: RUNNER_TLS_CA_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.crt"
-  - name: RUNNER_TLS_KEY_FILE
+  - name: RUNNER_TLS_PRIVATE_KEY_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.key"
   - name: KUBERNETES_CERT_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.crt"
