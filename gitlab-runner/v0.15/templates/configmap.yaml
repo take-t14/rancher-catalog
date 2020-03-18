@@ -56,9 +56,6 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    tls-ca-file="~/.gitlab-runner/certs/registry.example.com.crt"
-    tls-cert-file="~/.gitlab-runner/certs/registry.example.com.crt"
-    tls-key-file="~/.gitlab-runner/certs/registry.example.com.key"
   configure: |
     set -e
     cp /init-secrets/* /secrets
