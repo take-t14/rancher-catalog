@@ -392,5 +392,5 @@ podLabels: {}
 volumes:
   - type: "host_path"
     name: "docker"
-    path: "/etc/docker/daemon.json"
-    mount_path: "/root/.docker/config.json"
+    path: "/etc/docker"
+    mount_path: "/root/.docker"
