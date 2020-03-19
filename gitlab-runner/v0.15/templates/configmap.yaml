@@ -14,6 +14,8 @@ data:
     mkdir -p /home/gitlab-runner/.gitlab-runner/
     cp /scripts/config.toml /home/gitlab-runner/.gitlab-runner/
     cat >> /home/gitlab-runner/.gitlab-runner/config.toml <<-EOF
+    [[runners]]
+    environment = ["DOCKER_TLS_CERTDIR="]
     {{- if .Values.volumes }}
     {{- range .Values.volumes }}
       [[runners.kubernetes.volumes.{{ .type }}]]
@@ -68,8 +70,6 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
-    [[runners]]
-    environment = ["DOCKER_TLS_CERTDIR="]
   configure: |
     set -e
     cp /init-secrets/* /secrets
