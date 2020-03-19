@@ -56,6 +56,8 @@ data:
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
     {{- end }}
+    [[runners]]
+    environment = ["DOCKER_TLS_CERTDIR="]
   configure: |
     set -e
     cp /init-secrets/* /secrets
