@@ -58,6 +58,16 @@ data:
     {{- end }}
     [[runners]]
     environment = ["DOCKER_TLS_CERTDIR="]
+    {{- if .Values.runners.volumes }}
+    {{- range .Values.runners.volumes }}
+      [[runners.kubernetes.volumes.{{ .type }}]]
+      {{- range $key, $value := . }}
+      {{- if ne $key "type" }}
+        {{ $key }} = "{{ $value }}"
+      {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- end }}
   configure: |
     set -e
     cp /init-secrets/* /secrets
