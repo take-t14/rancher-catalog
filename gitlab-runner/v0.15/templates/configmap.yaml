@@ -13,7 +13,7 @@ data:
     set -e
     mkdir -p /home/gitlab-runner/.gitlab-runner/
     cp /scripts/config.toml /home/gitlab-runner/.gitlab-runner/
-    cat >> /etc/gitlab-runner/config.toml <<-EOF
+    cat >> /home/gitlab-runner/.gitlab-runner/config.toml <<-EOF
     {{- if .Values.volumes }}
     {{- range .Values.volumes }}
       [[runners.kubernetes.volumes.{{ .type }}]]
