@@ -42,6 +42,19 @@ data:
       exit 1
     fi
 
+    cat >> /home/gitlab-runner/.gitlab-runner/config.toml <<-EOF
+    {{- if .Values.volumes }}
+    {{- range .Values.volumes }}
+      [[runners.kubernetes.volumes.{{ .type }}]]
+      {{- range $key, $value := . }}
+      {{- if ne $key "type" }}
+        {{ $key }} = "{{ $value }}"
+      {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- end }}
+    EOF
+
     # Start the runner
     exec /entrypoint run --user=gitlab-runner \
       --working-directory=/home/gitlab-runner
@@ -55,16 +68,6 @@ data:
     {{- end }}
     {{- if .Values.metrics.enabled }}
     listen_address = '[::]:9252'
-    {{- end }}
-    {{- if .Values.volumes }}
-    {{- range .Values.volumes }}
-      [[runners.kubernetes.volumes.{{ .type }}]]
-      {{- range $key, $value := . }}
-      {{- if ne $key "type" }}
-        {{ $key }} = "{{ $value }}"
-      {{- end }}
-      {{- end }}
-    {{- end }}
     {{- end }}
   configure: |
     set -e
