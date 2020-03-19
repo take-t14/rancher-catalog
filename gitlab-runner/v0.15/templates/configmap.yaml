@@ -13,6 +13,18 @@ data:
     set -e
     mkdir -p /home/gitlab-runner/.gitlab-runner/
     cp /scripts/config.toml /home/gitlab-runner/.gitlab-runner/
+    cat >> /etc/gitlab-runner/config.toml <<-EOF
+    {{- if .Values.volumes }}
+    {{- range .Values.volumes }}
+      [[runners.kubernetes.volumes.{{ .type }}]]
+      {{- range $key, $value := . }}
+      {{- if ne $key "type" }}
+        {{ $key }} = "{{ $value }}"
+      {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- end }}
+    EOF
 
     # Register the runner
     if [[ -f /secrets/accesskey && -f /secrets/secretkey ]]; then
@@ -58,16 +70,6 @@ data:
     {{- end }}
     [[runners]]
     environment = ["DOCKER_TLS_CERTDIR="]
-    {{- if .Values.volumes }}
-    {{- range .Values.volumes }}
-      [[runners.kubernetes.volumes.{{ .type }}]]
-      {{- range $key, $value := . }}
-      {{- if ne $key "type" }}
-        {{ $key }} = "{{ $value }}"
-      {{- end }}
-      {{- end }}
-    {{- end }}
-    {{- end }}
   configure: |
     set -e
     cp /init-secrets/* /secrets
