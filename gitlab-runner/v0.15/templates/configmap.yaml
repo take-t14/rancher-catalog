@@ -58,8 +58,8 @@ data:
     {{- end }}
     [[runners]]
     environment = ["DOCKER_TLS_CERTDIR="]
-    {{- if .Values.runners.volumes }}
-    {{- range .Values.runners.volumes }}
+    {{- if .Values.volumes }}
+    {{- range .Values.volumes }}
       [[runners.kubernetes.volumes.{{ .type }}]]
       {{- range $key, $value := . }}
       {{- if ne $key "type" }}

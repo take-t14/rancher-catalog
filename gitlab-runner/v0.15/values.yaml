@@ -389,9 +389,8 @@ podLabels: {}
   #     metricName: gitlab_runner_jobs
   #     targetAverageValue: 400m
 
-runners:
-  volumes:
-    - type: "host_path"
-      name: "docker"
-      path: "/etc/docker/daemon.json"
-      mount_path: "/etc/docker/daemon.json"
+volumes:
+  - type: "host_path"
+    name: "docker"
+    path: "/etc/docker/daemon.json"
+    mount_path: "/etc/docker/daemon.json"
