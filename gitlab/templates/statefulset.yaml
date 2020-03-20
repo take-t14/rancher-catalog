@@ -68,8 +68,8 @@ spec:
           mkdir -p /etc/gitlab/ssl && \
           rm -rf /etc/gitlab/ssl/registry.example.com.crt && \
           rm -rf /etc/gitlab/ssl/registry.example.com.key && \
-          ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
-          ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
+          [ ! -e "/etc/gitlab/ssl/registry.example.com.crt" ] && ln -s /etc/ssl/regist-crt/registry.example.com.crt /etc/gitlab/ssl/registry.example.com.crt && \
+          [ ! -e "/etc/gitlab/ssl/registry.example.com.key" ] && ln -s /etc/ssl/regist-key/registry.example.com.key /etc/gitlab/ssl/registry.example.com.key && \
           apt-get update && \
           apt-get install -y locales locales-all && \
           /assets/wrapper
