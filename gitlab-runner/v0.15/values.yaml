@@ -391,7 +391,11 @@ podLabels: {}
   #     metricName: gitlab_runner_jobs
   #     targetAverageValue: 400m
 
-# volumes:
+volumes:
+  - type: "host_path"
+    name: "docker"
+    path: "/var/run"
+    mount_path: "/var/run"
 #   - type: "host_path"
 #     name: "docker"
 #     path: "/etc/docker"
