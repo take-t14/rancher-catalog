@@ -115,7 +115,7 @@ spec:
         - name: gitlab-pvc-log
           mountPath: /var/log/gitlab
         - name: gitlab-pvc-opt
-          mountPath: /var/opt/gitlab
+          mountPath: /var/opt
         - name: regist-crt
           mountPath: /etc/ssl/regist-crt
         - name: regist-key
