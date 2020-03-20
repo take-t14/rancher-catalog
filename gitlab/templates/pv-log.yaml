@@ -10,7 +10,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   local:
-    path: /var/log
+    path: /var/log/gitlab
   persistentVolumeReclaimPolicy: Retain
   nodeAffinity:
     required:
