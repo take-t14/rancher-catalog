@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: apache-php-pv
 spec:
+  serviceAccountName: apache-php
   capacity:
     storage: 1Gi
   accessModes:
