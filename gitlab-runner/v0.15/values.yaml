@@ -327,7 +327,7 @@ tolerations: []
 #     value: "echo '192.168.2.210 gitlab.example.com registry.example.com' >> /etc/hosts; mkdir -p /etc/docker; echo '{\"insecure-registries\":[\"registry.example.com\",\"registry.example.com:443\",\"registry.example.com:4567\"]}' > /etc/docker/daemon.json; ps aux | grep postgres | grep -v grep | awk '{ print \"kill -9\", $2 }' | sh; dockerd-entrypoint.sh;"
 envVars:
   - name: RUNNER_PRE_CLONE_SCRIPT
-    value: "echo '192.168.2.210 gitlab.example.com registry.example.com' >> /etc/hosts; echo 'nameserver 10.43.0.11' > /etc/resolv.conf; echo 'nameserver 10.43.0.12' >> /etc/resolv.conf;"
+    value: "echo '192.168.2.210 gitlab.example.com registry.example.com' >> /etc/hosts;"
   - name: RUNNER_TLS_CERT_FILE
     value: "~/.gitlab-runner/certs/registry.example.com.crt"
   - name: RUNNER_TLS_CA_FILE
